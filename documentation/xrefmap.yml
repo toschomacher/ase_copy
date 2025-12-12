@@ -1,0 +1,915 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: BOOSEappTV
+  name: BOOSEappTV
+  href: boose/BOOSEappTV.html
+  commentId: N:BOOSEappTV
+  fullName: BOOSEappTV
+  nameWithType: BOOSEappTV
+- uid: BOOSEappTV.AppCanvas
+  name: AppCanvas
+  href: boose/BOOSEappTV.AppCanvas.html
+  commentId: T:BOOSEappTV.AppCanvas
+  fullName: BOOSEappTV.AppCanvas
+  nameWithType: AppCanvas
+- uid: BOOSEappTV.AppCanvas.#ctor(System.Int32,System.Int32)
+  name: AppCanvas(int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas__ctor_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.#ctor(System.Int32,System.Int32)
+  name.vb: New(Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.AppCanvas(int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.New(Integer, Integer)
+  nameWithType: AppCanvas.AppCanvas(int, int)
+  nameWithType.vb: AppCanvas.New(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.#ctor*
+  name: AppCanvas
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas__ctor_
+  commentId: Overload:BOOSEappTV.AppCanvas.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppCanvas.AppCanvas
+  fullName.vb: BOOSEappTV.AppCanvas.New
+  nameWithType: AppCanvas.AppCanvas
+  nameWithType.vb: AppCanvas.New
+- uid: BOOSEappTV.AppCanvas.Circle(System.Int32,System.Boolean)
+  name: Circle(int, bool)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Circle_System_Int32_System_Boolean_
+  commentId: M:BOOSEappTV.AppCanvas.Circle(System.Int32,System.Boolean)
+  name.vb: Circle(Integer, Boolean)
+  fullName: BOOSEappTV.AppCanvas.Circle(int, bool)
+  fullName.vb: BOOSEappTV.AppCanvas.Circle(Integer, Boolean)
+  nameWithType: AppCanvas.Circle(int, bool)
+  nameWithType.vb: AppCanvas.Circle(Integer, Boolean)
+- uid: BOOSEappTV.AppCanvas.Circle*
+  name: Circle
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Circle_
+  commentId: Overload:BOOSEappTV.AppCanvas.Circle
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Circle
+  nameWithType: AppCanvas.Circle
+- uid: BOOSEappTV.AppCanvas.Clear
+  name: Clear()
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear
+  commentId: M:BOOSEappTV.AppCanvas.Clear
+  fullName: BOOSEappTV.AppCanvas.Clear()
+  nameWithType: AppCanvas.Clear()
+- uid: BOOSEappTV.AppCanvas.Clear*
+  name: Clear
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear_
+  commentId: Overload:BOOSEappTV.AppCanvas.Clear
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Clear
+  nameWithType: AppCanvas.Clear
+- uid: BOOSEappTV.AppCanvas.Current
+  name: Current
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Current
+  commentId: P:BOOSEappTV.AppCanvas.Current
+  fullName: BOOSEappTV.AppCanvas.Current
+  nameWithType: AppCanvas.Current
+- uid: BOOSEappTV.AppCanvas.Current*
+  name: Current
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Current_
+  commentId: Overload:BOOSEappTV.AppCanvas.Current
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Current
+  nameWithType: AppCanvas.Current
+- uid: BOOSEappTV.AppCanvas.DrawTo(System.Int32,System.Int32)
+  name: DrawTo(int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_DrawTo_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.DrawTo(System.Int32,System.Int32)
+  name.vb: DrawTo(Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.DrawTo(int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.DrawTo(Integer, Integer)
+  nameWithType: AppCanvas.DrawTo(int, int)
+  nameWithType.vb: AppCanvas.DrawTo(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.DrawTo*
+  name: DrawTo
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_DrawTo_
+  commentId: Overload:BOOSEappTV.AppCanvas.DrawTo
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.DrawTo
+  nameWithType: AppCanvas.DrawTo
+- uid: BOOSEappTV.AppCanvas.GetCanvas
+  name: GetCanvas()
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_GetCanvas
+  commentId: M:BOOSEappTV.AppCanvas.GetCanvas
+  fullName: BOOSEappTV.AppCanvas.GetCanvas()
+  nameWithType: AppCanvas.GetCanvas()
+- uid: BOOSEappTV.AppCanvas.GetCanvas*
+  name: GetCanvas
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_GetCanvas_
+  commentId: Overload:BOOSEappTV.AppCanvas.GetCanvas
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.GetCanvas
+  nameWithType: AppCanvas.GetCanvas
+- uid: BOOSEappTV.AppCanvas.HasLastCircle
+  name: HasLastCircle
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastCircle
+  commentId: P:BOOSEappTV.AppCanvas.HasLastCircle
+  fullName: BOOSEappTV.AppCanvas.HasLastCircle
+  nameWithType: AppCanvas.HasLastCircle
+- uid: BOOSEappTV.AppCanvas.HasLastCircle*
+  name: HasLastCircle
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastCircle_
+  commentId: Overload:BOOSEappTV.AppCanvas.HasLastCircle
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.HasLastCircle
+  nameWithType: AppCanvas.HasLastCircle
+- uid: BOOSEappTV.AppCanvas.HasLastRect
+  name: HasLastRect
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastRect
+  commentId: P:BOOSEappTV.AppCanvas.HasLastRect
+  fullName: BOOSEappTV.AppCanvas.HasLastRect
+  nameWithType: AppCanvas.HasLastRect
+- uid: BOOSEappTV.AppCanvas.HasLastRect*
+  name: HasLastRect
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastRect_
+  commentId: Overload:BOOSEappTV.AppCanvas.HasLastRect
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.HasLastRect
+  nameWithType: AppCanvas.HasLastRect
+- uid: BOOSEappTV.AppCanvas.LastCircleRadius
+  name: LastCircleRadius
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastCircleRadius
+  commentId: P:BOOSEappTV.AppCanvas.LastCircleRadius
+  fullName: BOOSEappTV.AppCanvas.LastCircleRadius
+  nameWithType: AppCanvas.LastCircleRadius
+- uid: BOOSEappTV.AppCanvas.LastCircleRadius*
+  name: LastCircleRadius
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastCircleRadius_
+  commentId: Overload:BOOSEappTV.AppCanvas.LastCircleRadius
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.LastCircleRadius
+  nameWithType: AppCanvas.LastCircleRadius
+- uid: BOOSEappTV.AppCanvas.LastRectParameters
+  name: LastRectParameters
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastRectParameters
+  commentId: P:BOOSEappTV.AppCanvas.LastRectParameters
+  fullName: BOOSEappTV.AppCanvas.LastRectParameters
+  nameWithType: AppCanvas.LastRectParameters
+- uid: BOOSEappTV.AppCanvas.LastRectParameters*
+  name: LastRectParameters
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastRectParameters_
+  commentId: Overload:BOOSEappTV.AppCanvas.LastRectParameters
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.LastRectParameters
+  nameWithType: AppCanvas.LastRectParameters
+- uid: BOOSEappTV.AppCanvas.MoveTo(System.Int32,System.Int32)
+  name: MoveTo(int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_MoveTo_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.MoveTo(System.Int32,System.Int32)
+  name.vb: MoveTo(Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.MoveTo(int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.MoveTo(Integer, Integer)
+  nameWithType: AppCanvas.MoveTo(int, int)
+  nameWithType.vb: AppCanvas.MoveTo(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.MoveTo*
+  name: MoveTo
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_MoveTo_
+  commentId: Overload:BOOSEappTV.AppCanvas.MoveTo
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.MoveTo
+  nameWithType: AppCanvas.MoveTo
+- uid: BOOSEappTV.AppCanvas.PenColour
+  name: PenColour
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_PenColour
+  commentId: P:BOOSEappTV.AppCanvas.PenColour
+  fullName: BOOSEappTV.AppCanvas.PenColour
+  nameWithType: AppCanvas.PenColour
+- uid: BOOSEappTV.AppCanvas.PenColour*
+  name: PenColour
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_PenColour_
+  commentId: Overload:BOOSEappTV.AppCanvas.PenColour
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.PenColour
+  nameWithType: AppCanvas.PenColour
+- uid: BOOSEappTV.AppCanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  name: Rect(int, int, bool)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Rect_System_Int32_System_Int32_System_Boolean_
+  commentId: M:BOOSEappTV.AppCanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  name.vb: Rect(Integer, Integer, Boolean)
+  fullName: BOOSEappTV.AppCanvas.Rect(int, int, bool)
+  fullName.vb: BOOSEappTV.AppCanvas.Rect(Integer, Integer, Boolean)
+  nameWithType: AppCanvas.Rect(int, int, bool)
+  nameWithType.vb: AppCanvas.Rect(Integer, Integer, Boolean)
+- uid: BOOSEappTV.AppCanvas.Rect*
+  name: Rect
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Rect_
+  commentId: Overload:BOOSEappTV.AppCanvas.Rect
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Rect
+  nameWithType: AppCanvas.Rect
+- uid: BOOSEappTV.AppCanvas.Reset
+  name: Reset()
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Reset
+  commentId: M:BOOSEappTV.AppCanvas.Reset
+  fullName: BOOSEappTV.AppCanvas.Reset()
+  nameWithType: AppCanvas.Reset()
+- uid: BOOSEappTV.AppCanvas.Reset*
+  name: Reset
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Reset_
+  commentId: Overload:BOOSEappTV.AppCanvas.Reset
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Reset
+  nameWithType: AppCanvas.Reset
+- uid: BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  name: Set(int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  name.vb: Set(Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.Set(int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.Set(Integer, Integer)
+  nameWithType: AppCanvas.Set(int, int)
+  nameWithType.vb: AppCanvas.Set(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.Set*
+  name: Set
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_
+  commentId: Overload:BOOSEappTV.AppCanvas.Set
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Set
+  nameWithType: AppCanvas.Set
+- uid: BOOSEappTV.AppCanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  name: SetColour(int, int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_SetColour_System_Int32_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  name.vb: SetColour(Integer, Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.SetColour(int, int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.SetColour(Integer, Integer, Integer)
+  nameWithType: AppCanvas.SetColour(int, int, int)
+  nameWithType.vb: AppCanvas.SetColour(Integer, Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.SetColour*
+  name: SetColour
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_SetColour_
+  commentId: Overload:BOOSEappTV.AppCanvas.SetColour
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.SetColour
+  nameWithType: AppCanvas.SetColour
+- uid: BOOSEappTV.AppCanvas.Tri(System.Int32,System.Int32)
+  name: Tri(int, int)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Tri_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppCanvas.Tri(System.Int32,System.Int32)
+  name.vb: Tri(Integer, Integer)
+  fullName: BOOSEappTV.AppCanvas.Tri(int, int)
+  fullName.vb: BOOSEappTV.AppCanvas.Tri(Integer, Integer)
+  nameWithType: AppCanvas.Tri(int, int)
+  nameWithType.vb: AppCanvas.Tri(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.Tri*
+  name: Tri
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Tri_
+  commentId: Overload:BOOSEappTV.AppCanvas.Tri
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Tri
+  nameWithType: AppCanvas.Tri
+- uid: BOOSEappTV.AppCanvas.WriteText(System.String)
+  name: WriteText(string)
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_WriteText_System_String_
+  commentId: M:BOOSEappTV.AppCanvas.WriteText(System.String)
+  name.vb: WriteText(String)
+  fullName: BOOSEappTV.AppCanvas.WriteText(string)
+  fullName.vb: BOOSEappTV.AppCanvas.WriteText(String)
+  nameWithType: AppCanvas.WriteText(string)
+  nameWithType.vb: AppCanvas.WriteText(String)
+- uid: BOOSEappTV.AppCanvas.WriteText*
+  name: WriteText
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_WriteText_
+  commentId: Overload:BOOSEappTV.AppCanvas.WriteText
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.WriteText
+  nameWithType: AppCanvas.WriteText
+- uid: BOOSEappTV.AppCanvas.XSize
+  name: XSize
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_XSize
+  commentId: P:BOOSEappTV.AppCanvas.XSize
+  fullName: BOOSEappTV.AppCanvas.XSize
+  nameWithType: AppCanvas.XSize
+- uid: BOOSEappTV.AppCanvas.XSize*
+  name: XSize
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_XSize_
+  commentId: Overload:BOOSEappTV.AppCanvas.XSize
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.XSize
+  nameWithType: AppCanvas.XSize
+- uid: BOOSEappTV.AppCanvas.Xpos
+  name: Xpos
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Xpos
+  commentId: P:BOOSEappTV.AppCanvas.Xpos
+  fullName: BOOSEappTV.AppCanvas.Xpos
+  nameWithType: AppCanvas.Xpos
+- uid: BOOSEappTV.AppCanvas.Xpos*
+  name: Xpos
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Xpos_
+  commentId: Overload:BOOSEappTV.AppCanvas.Xpos
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Xpos
+  nameWithType: AppCanvas.Xpos
+- uid: BOOSEappTV.AppCanvas.YSize
+  name: YSize
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_YSize
+  commentId: P:BOOSEappTV.AppCanvas.YSize
+  fullName: BOOSEappTV.AppCanvas.YSize
+  nameWithType: AppCanvas.YSize
+- uid: BOOSEappTV.AppCanvas.YSize*
+  name: YSize
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_YSize_
+  commentId: Overload:BOOSEappTV.AppCanvas.YSize
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.YSize
+  nameWithType: AppCanvas.YSize
+- uid: BOOSEappTV.AppCanvas.Ypos
+  name: Ypos
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Ypos
+  commentId: P:BOOSEappTV.AppCanvas.Ypos
+  fullName: BOOSEappTV.AppCanvas.Ypos
+  nameWithType: AppCanvas.Ypos
+- uid: BOOSEappTV.AppCanvas.Ypos*
+  name: Ypos
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Ypos_
+  commentId: Overload:BOOSEappTV.AppCanvas.Ypos
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.Ypos
+  nameWithType: AppCanvas.Ypos
+- uid: BOOSEappTV.AppCanvas.background_colour
+  name: background_colour
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_background_colour
+  commentId: F:BOOSEappTV.AppCanvas.background_colour
+  fullName: BOOSEappTV.AppCanvas.background_colour
+  nameWithType: AppCanvas.background_colour
+- uid: BOOSEappTV.AppCanvas.getBitmap
+  name: getBitmap()
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_getBitmap
+  commentId: M:BOOSEappTV.AppCanvas.getBitmap
+  fullName: BOOSEappTV.AppCanvas.getBitmap()
+  nameWithType: AppCanvas.getBitmap()
+- uid: BOOSEappTV.AppCanvas.getBitmap*
+  name: getBitmap
+  href: boose/BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_getBitmap_
+  commentId: Overload:BOOSEappTV.AppCanvas.getBitmap
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCanvas.getBitmap
+  nameWithType: AppCanvas.getBitmap
+- uid: BOOSEappTV.AppCircle
+  name: AppCircle
+  href: boose/BOOSEappTV.AppCircle.html
+  commentId: T:BOOSEappTV.AppCircle
+  fullName: BOOSEappTV.AppCircle
+  nameWithType: AppCircle
+- uid: BOOSEappTV.AppCircle.#ctor
+  name: AppCircle()
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle__ctor
+  commentId: M:BOOSEappTV.AppCircle.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.AppCircle.AppCircle()
+  fullName.vb: BOOSEappTV.AppCircle.New()
+  nameWithType: AppCircle.AppCircle()
+  nameWithType.vb: AppCircle.New()
+- uid: BOOSEappTV.AppCircle.#ctor(BOOSE.Canvas,System.Int32)
+  name: AppCircle(Canvas, int)
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle__ctor_BOOSE_Canvas_System_Int32_
+  commentId: M:BOOSEappTV.AppCircle.#ctor(BOOSE.Canvas,System.Int32)
+  name.vb: New(Canvas, Integer)
+  fullName: BOOSEappTV.AppCircle.AppCircle(BOOSE.Canvas, int)
+  fullName.vb: BOOSEappTV.AppCircle.New(BOOSE.Canvas, Integer)
+  nameWithType: AppCircle.AppCircle(Canvas, int)
+  nameWithType.vb: AppCircle.New(Canvas, Integer)
+- uid: BOOSEappTV.AppCircle.#ctor*
+  name: AppCircle
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle__ctor_
+  commentId: Overload:BOOSEappTV.AppCircle.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppCircle.AppCircle
+  fullName.vb: BOOSEappTV.AppCircle.New
+  nameWithType: AppCircle.AppCircle
+  nameWithType.vb: AppCircle.New
+- uid: BOOSEappTV.AppCircle.CheckParameters(System.String[])
+  name: CheckParameters(string[])
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_CheckParameters_System_String___
+  commentId: M:BOOSEappTV.AppCircle.CheckParameters(System.String[])
+  name.vb: CheckParameters(String())
+  fullName: BOOSEappTV.AppCircle.CheckParameters(string[])
+  fullName.vb: BOOSEappTV.AppCircle.CheckParameters(String())
+  nameWithType: AppCircle.CheckParameters(string[])
+  nameWithType.vb: AppCircle.CheckParameters(String())
+- uid: BOOSEappTV.AppCircle.CheckParameters*
+  name: CheckParameters
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_CheckParameters_
+  commentId: Overload:BOOSEappTV.AppCircle.CheckParameters
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCircle.CheckParameters
+  nameWithType: AppCircle.CheckParameters
+- uid: BOOSEappTV.AppCircle.Compile
+  name: Compile()
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Compile
+  commentId: M:BOOSEappTV.AppCircle.Compile
+  fullName: BOOSEappTV.AppCircle.Compile()
+  nameWithType: AppCircle.Compile()
+- uid: BOOSEappTV.AppCircle.Compile*
+  name: Compile
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Compile_
+  commentId: Overload:BOOSEappTV.AppCircle.Compile
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCircle.Compile
+  nameWithType: AppCircle.Compile
+- uid: BOOSEappTV.AppCircle.Execute
+  name: Execute()
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Execute
+  commentId: M:BOOSEappTV.AppCircle.Execute
+  fullName: BOOSEappTV.AppCircle.Execute()
+  nameWithType: AppCircle.Execute()
+- uid: BOOSEappTV.AppCircle.Execute*
+  name: Execute
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Execute_
+  commentId: Overload:BOOSEappTV.AppCircle.Execute
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCircle.Execute
+  nameWithType: AppCircle.Execute
+- uid: BOOSEappTV.AppCircle.Set(BOOSE.StoredProgram,System.String)
+  name: Set(StoredProgram, string)
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Set_BOOSE_StoredProgram_System_String_
+  commentId: M:BOOSEappTV.AppCircle.Set(BOOSE.StoredProgram,System.String)
+  name.vb: Set(StoredProgram, String)
+  fullName: BOOSEappTV.AppCircle.Set(BOOSE.StoredProgram, string)
+  fullName.vb: BOOSEappTV.AppCircle.Set(BOOSE.StoredProgram, String)
+  nameWithType: AppCircle.Set(StoredProgram, string)
+  nameWithType.vb: AppCircle.Set(StoredProgram, String)
+- uid: BOOSEappTV.AppCircle.Set*
+  name: Set
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_Set_
+  commentId: Overload:BOOSEappTV.AppCircle.Set
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCircle.Set
+  nameWithType: AppCircle.Set
+- uid: BOOSEappTV.AppCircle.ToString
+  name: ToString()
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_ToString
+  commentId: M:BOOSEappTV.AppCircle.ToString
+  fullName: BOOSEappTV.AppCircle.ToString()
+  nameWithType: AppCircle.ToString()
+- uid: BOOSEappTV.AppCircle.ToString*
+  name: ToString
+  href: boose/BOOSEappTV.AppCircle.html#BOOSEappTV_AppCircle_ToString_
+  commentId: Overload:BOOSEappTV.AppCircle.ToString
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCircle.ToString
+  nameWithType: AppCircle.ToString
+- uid: BOOSEappTV.AppCommandFactory
+  name: AppCommandFactory
+  href: boose/BOOSEappTV.AppCommandFactory.html
+  commentId: T:BOOSEappTV.AppCommandFactory
+  fullName: BOOSEappTV.AppCommandFactory
+  nameWithType: AppCommandFactory
+- uid: BOOSEappTV.AppCommandFactory.MakeCommand(System.String)
+  name: MakeCommand(string)
+  href: boose/BOOSEappTV.AppCommandFactory.html#BOOSEappTV_AppCommandFactory_MakeCommand_System_String_
+  commentId: M:BOOSEappTV.AppCommandFactory.MakeCommand(System.String)
+  name.vb: MakeCommand(String)
+  fullName: BOOSEappTV.AppCommandFactory.MakeCommand(string)
+  fullName.vb: BOOSEappTV.AppCommandFactory.MakeCommand(String)
+  nameWithType: AppCommandFactory.MakeCommand(string)
+  nameWithType.vb: AppCommandFactory.MakeCommand(String)
+- uid: BOOSEappTV.AppCommandFactory.MakeCommand*
+  name: MakeCommand
+  href: boose/BOOSEappTV.AppCommandFactory.html#BOOSEappTV_AppCommandFactory_MakeCommand_
+  commentId: Overload:BOOSEappTV.AppCommandFactory.MakeCommand
+  isSpec: "True"
+  fullName: BOOSEappTV.AppCommandFactory.MakeCommand
+  nameWithType: AppCommandFactory.MakeCommand
+- uid: BOOSEappTV.AppConsole
+  name: AppConsole
+  href: boose/BOOSEappTV.AppConsole.html
+  commentId: T:BOOSEappTV.AppConsole
+  fullName: BOOSEappTV.AppConsole
+  nameWithType: AppConsole
+- uid: BOOSEappTV.AppConsole.Initialize(System.Windows.Forms.RichTextBox)
+  name: Initialize(RichTextBox)
+  href: boose/BOOSEappTV.AppConsole.html#BOOSEappTV_AppConsole_Initialize_System_Windows_Forms_RichTextBox_
+  commentId: M:BOOSEappTV.AppConsole.Initialize(System.Windows.Forms.RichTextBox)
+  fullName: BOOSEappTV.AppConsole.Initialize(System.Windows.Forms.RichTextBox)
+  nameWithType: AppConsole.Initialize(RichTextBox)
+- uid: BOOSEappTV.AppConsole.Initialize*
+  name: Initialize
+  href: boose/BOOSEappTV.AppConsole.html#BOOSEappTV_AppConsole_Initialize_
+  commentId: Overload:BOOSEappTV.AppConsole.Initialize
+  isSpec: "True"
+  fullName: BOOSEappTV.AppConsole.Initialize
+  nameWithType: AppConsole.Initialize
+- uid: BOOSEappTV.AppConsole.WriteLine(System.String,System.Boolean)
+  name: WriteLine(string, bool)
+  href: boose/BOOSEappTV.AppConsole.html#BOOSEappTV_AppConsole_WriteLine_System_String_System_Boolean_
+  commentId: M:BOOSEappTV.AppConsole.WriteLine(System.String,System.Boolean)
+  name.vb: WriteLine(String, Boolean)
+  fullName: BOOSEappTV.AppConsole.WriteLine(string, bool)
+  fullName.vb: BOOSEappTV.AppConsole.WriteLine(String, Boolean)
+  nameWithType: AppConsole.WriteLine(string, bool)
+  nameWithType.vb: AppConsole.WriteLine(String, Boolean)
+- uid: BOOSEappTV.AppConsole.WriteLine*
+  name: WriteLine
+  href: boose/BOOSEappTV.AppConsole.html#BOOSEappTV_AppConsole_WriteLine_
+  commentId: Overload:BOOSEappTV.AppConsole.WriteLine
+  isSpec: "True"
+  fullName: BOOSEappTV.AppConsole.WriteLine
+  nameWithType: AppConsole.WriteLine
+- uid: BOOSEappTV.AppDrawTo
+  name: AppDrawTo
+  href: boose/BOOSEappTV.AppDrawTo.html
+  commentId: T:BOOSEappTV.AppDrawTo
+  fullName: BOOSEappTV.AppDrawTo
+  nameWithType: AppDrawTo
+- uid: BOOSEappTV.AppDrawTo.#ctor
+  name: AppDrawTo()
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo__ctor
+  commentId: M:BOOSEappTV.AppDrawTo.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.AppDrawTo.AppDrawTo()
+  fullName.vb: BOOSEappTV.AppDrawTo.New()
+  nameWithType: AppDrawTo.AppDrawTo()
+  nameWithType.vb: AppDrawTo.New()
+- uid: BOOSEappTV.AppDrawTo.#ctor(BOOSE.Canvas,System.Int32,System.Int32)
+  name: AppDrawTo(Canvas, int, int)
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo__ctor_BOOSE_Canvas_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppDrawTo.#ctor(BOOSE.Canvas,System.Int32,System.Int32)
+  name.vb: New(Canvas, Integer, Integer)
+  fullName: BOOSEappTV.AppDrawTo.AppDrawTo(BOOSE.Canvas, int, int)
+  fullName.vb: BOOSEappTV.AppDrawTo.New(BOOSE.Canvas, Integer, Integer)
+  nameWithType: AppDrawTo.AppDrawTo(Canvas, int, int)
+  nameWithType.vb: AppDrawTo.New(Canvas, Integer, Integer)
+- uid: BOOSEappTV.AppDrawTo.#ctor*
+  name: AppDrawTo
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo__ctor_
+  commentId: Overload:BOOSEappTV.AppDrawTo.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppDrawTo.AppDrawTo
+  fullName.vb: BOOSEappTV.AppDrawTo.New
+  nameWithType: AppDrawTo.AppDrawTo
+  nameWithType.vb: AppDrawTo.New
+- uid: BOOSEappTV.AppDrawTo.Execute
+  name: Execute()
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_Execute
+  commentId: M:BOOSEappTV.AppDrawTo.Execute
+  fullName: BOOSEappTV.AppDrawTo.Execute()
+  nameWithType: AppDrawTo.Execute()
+- uid: BOOSEappTV.AppDrawTo.Execute*
+  name: Execute
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_Execute_
+  commentId: Overload:BOOSEappTV.AppDrawTo.Execute
+  isSpec: "True"
+  fullName: BOOSEappTV.AppDrawTo.Execute
+  nameWithType: AppDrawTo.Execute
+- uid: BOOSEappTV.AppDrawTo.X
+  name: X
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_X
+  commentId: P:BOOSEappTV.AppDrawTo.X
+  fullName: BOOSEappTV.AppDrawTo.X
+  nameWithType: AppDrawTo.X
+- uid: BOOSEappTV.AppDrawTo.X*
+  name: X
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_X_
+  commentId: Overload:BOOSEappTV.AppDrawTo.X
+  isSpec: "True"
+  fullName: BOOSEappTV.AppDrawTo.X
+  nameWithType: AppDrawTo.X
+- uid: BOOSEappTV.AppDrawTo.Y
+  name: Y
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_Y
+  commentId: P:BOOSEappTV.AppDrawTo.Y
+  fullName: BOOSEappTV.AppDrawTo.Y
+  nameWithType: AppDrawTo.Y
+- uid: BOOSEappTV.AppDrawTo.Y*
+  name: Y
+  href: boose/BOOSEappTV.AppDrawTo.html#BOOSEappTV_AppDrawTo_Y_
+  commentId: Overload:BOOSEappTV.AppDrawTo.Y
+  isSpec: "True"
+  fullName: BOOSEappTV.AppDrawTo.Y
+  nameWithType: AppDrawTo.Y
+- uid: BOOSEappTV.AppMoveTo
+  name: AppMoveTo
+  href: boose/BOOSEappTV.AppMoveTo.html
+  commentId: T:BOOSEappTV.AppMoveTo
+  fullName: BOOSEappTV.AppMoveTo
+  nameWithType: AppMoveTo
+- uid: BOOSEappTV.AppMoveTo.#ctor
+  name: AppMoveTo()
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo__ctor
+  commentId: M:BOOSEappTV.AppMoveTo.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.AppMoveTo.AppMoveTo()
+  fullName.vb: BOOSEappTV.AppMoveTo.New()
+  nameWithType: AppMoveTo.AppMoveTo()
+  nameWithType.vb: AppMoveTo.New()
+- uid: BOOSEappTV.AppMoveTo.#ctor(BOOSE.Canvas,System.Int32,System.Int32)
+  name: AppMoveTo(Canvas, int, int)
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo__ctor_BOOSE_Canvas_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppMoveTo.#ctor(BOOSE.Canvas,System.Int32,System.Int32)
+  name.vb: New(Canvas, Integer, Integer)
+  fullName: BOOSEappTV.AppMoveTo.AppMoveTo(BOOSE.Canvas, int, int)
+  fullName.vb: BOOSEappTV.AppMoveTo.New(BOOSE.Canvas, Integer, Integer)
+  nameWithType: AppMoveTo.AppMoveTo(Canvas, int, int)
+  nameWithType.vb: AppMoveTo.New(Canvas, Integer, Integer)
+- uid: BOOSEappTV.AppMoveTo.#ctor*
+  name: AppMoveTo
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo__ctor_
+  commentId: Overload:BOOSEappTV.AppMoveTo.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppMoveTo.AppMoveTo
+  fullName.vb: BOOSEappTV.AppMoveTo.New
+  nameWithType: AppMoveTo.AppMoveTo
+  nameWithType.vb: AppMoveTo.New
+- uid: BOOSEappTV.AppMoveTo.Execute
+  name: Execute()
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_Execute
+  commentId: M:BOOSEappTV.AppMoveTo.Execute
+  fullName: BOOSEappTV.AppMoveTo.Execute()
+  nameWithType: AppMoveTo.Execute()
+- uid: BOOSEappTV.AppMoveTo.Execute*
+  name: Execute
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_Execute_
+  commentId: Overload:BOOSEappTV.AppMoveTo.Execute
+  isSpec: "True"
+  fullName: BOOSEappTV.AppMoveTo.Execute
+  nameWithType: AppMoveTo.Execute
+- uid: BOOSEappTV.AppMoveTo.XPos
+  name: XPos
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_XPos
+  commentId: P:BOOSEappTV.AppMoveTo.XPos
+  fullName: BOOSEappTV.AppMoveTo.XPos
+  nameWithType: AppMoveTo.XPos
+- uid: BOOSEappTV.AppMoveTo.XPos*
+  name: XPos
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_XPos_
+  commentId: Overload:BOOSEappTV.AppMoveTo.XPos
+  isSpec: "True"
+  fullName: BOOSEappTV.AppMoveTo.XPos
+  nameWithType: AppMoveTo.XPos
+- uid: BOOSEappTV.AppMoveTo.YPos
+  name: YPos
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_YPos
+  commentId: P:BOOSEappTV.AppMoveTo.YPos
+  fullName: BOOSEappTV.AppMoveTo.YPos
+  nameWithType: AppMoveTo.YPos
+- uid: BOOSEappTV.AppMoveTo.YPos*
+  name: YPos
+  href: boose/BOOSEappTV.AppMoveTo.html#BOOSEappTV_AppMoveTo_YPos_
+  commentId: Overload:BOOSEappTV.AppMoveTo.YPos
+  isSpec: "True"
+  fullName: BOOSEappTV.AppMoveTo.YPos
+  nameWithType: AppMoveTo.YPos
+- uid: BOOSEappTV.AppPenColour
+  name: AppPenColour
+  href: boose/BOOSEappTV.AppPenColour.html
+  commentId: T:BOOSEappTV.AppPenColour
+  fullName: BOOSEappTV.AppPenColour
+  nameWithType: AppPenColour
+- uid: BOOSEappTV.AppPenColour.#ctor
+  name: AppPenColour()
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour__ctor
+  commentId: M:BOOSEappTV.AppPenColour.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.AppPenColour.AppPenColour()
+  fullName.vb: BOOSEappTV.AppPenColour.New()
+  nameWithType: AppPenColour.AppPenColour()
+  nameWithType.vb: AppPenColour.New()
+- uid: BOOSEappTV.AppPenColour.#ctor(BOOSE.Canvas,System.Int32,System.Int32,System.Int32)
+  name: AppPenColour(Canvas, int, int, int)
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour__ctor_BOOSE_Canvas_System_Int32_System_Int32_System_Int32_
+  commentId: M:BOOSEappTV.AppPenColour.#ctor(BOOSE.Canvas,System.Int32,System.Int32,System.Int32)
+  name.vb: New(Canvas, Integer, Integer, Integer)
+  fullName: BOOSEappTV.AppPenColour.AppPenColour(BOOSE.Canvas, int, int, int)
+  fullName.vb: BOOSEappTV.AppPenColour.New(BOOSE.Canvas, Integer, Integer, Integer)
+  nameWithType: AppPenColour.AppPenColour(Canvas, int, int, int)
+  nameWithType.vb: AppPenColour.New(Canvas, Integer, Integer, Integer)
+- uid: BOOSEappTV.AppPenColour.#ctor*
+  name: AppPenColour
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour__ctor_
+  commentId: Overload:BOOSEappTV.AppPenColour.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppPenColour.AppPenColour
+  fullName.vb: BOOSEappTV.AppPenColour.New
+  nameWithType: AppPenColour.AppPenColour
+  nameWithType.vb: AppPenColour.New
+- uid: BOOSEappTV.AppPenColour.CheckParameters(System.String[])
+  name: CheckParameters(string[])
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_CheckParameters_System_String___
+  commentId: M:BOOSEappTV.AppPenColour.CheckParameters(System.String[])
+  name.vb: CheckParameters(String())
+  fullName: BOOSEappTV.AppPenColour.CheckParameters(string[])
+  fullName.vb: BOOSEappTV.AppPenColour.CheckParameters(String())
+  nameWithType: AppPenColour.CheckParameters(string[])
+  nameWithType.vb: AppPenColour.CheckParameters(String())
+- uid: BOOSEappTV.AppPenColour.CheckParameters*
+  name: CheckParameters
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_CheckParameters_
+  commentId: Overload:BOOSEappTV.AppPenColour.CheckParameters
+  isSpec: "True"
+  fullName: BOOSEappTV.AppPenColour.CheckParameters
+  nameWithType: AppPenColour.CheckParameters
+- uid: BOOSEappTV.AppPenColour.Compile
+  name: Compile()
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Compile
+  commentId: M:BOOSEappTV.AppPenColour.Compile
+  fullName: BOOSEappTV.AppPenColour.Compile()
+  nameWithType: AppPenColour.Compile()
+- uid: BOOSEappTV.AppPenColour.Compile*
+  name: Compile
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Compile_
+  commentId: Overload:BOOSEappTV.AppPenColour.Compile
+  isSpec: "True"
+  fullName: BOOSEappTV.AppPenColour.Compile
+  nameWithType: AppPenColour.Compile
+- uid: BOOSEappTV.AppPenColour.Execute
+  name: Execute()
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Execute
+  commentId: M:BOOSEappTV.AppPenColour.Execute
+  fullName: BOOSEappTV.AppPenColour.Execute()
+  nameWithType: AppPenColour.Execute()
+- uid: BOOSEappTV.AppPenColour.Execute*
+  name: Execute
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Execute_
+  commentId: Overload:BOOSEappTV.AppPenColour.Execute
+  isSpec: "True"
+  fullName: BOOSEappTV.AppPenColour.Execute
+  nameWithType: AppPenColour.Execute
+- uid: BOOSEappTV.AppPenColour.Set(BOOSE.StoredProgram,System.String)
+  name: Set(StoredProgram, string)
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Set_BOOSE_StoredProgram_System_String_
+  commentId: M:BOOSEappTV.AppPenColour.Set(BOOSE.StoredProgram,System.String)
+  name.vb: Set(StoredProgram, String)
+  fullName: BOOSEappTV.AppPenColour.Set(BOOSE.StoredProgram, string)
+  fullName.vb: BOOSEappTV.AppPenColour.Set(BOOSE.StoredProgram, String)
+  nameWithType: AppPenColour.Set(StoredProgram, string)
+  nameWithType.vb: AppPenColour.Set(StoredProgram, String)
+- uid: BOOSEappTV.AppPenColour.Set*
+  name: Set
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_Set_
+  commentId: Overload:BOOSEappTV.AppPenColour.Set
+  isSpec: "True"
+  fullName: BOOSEappTV.AppPenColour.Set
+  nameWithType: AppPenColour.Set
+- uid: BOOSEappTV.AppPenColour.ToString
+  name: ToString()
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_ToString
+  commentId: M:BOOSEappTV.AppPenColour.ToString
+  fullName: BOOSEappTV.AppPenColour.ToString()
+  nameWithType: AppPenColour.ToString()
+- uid: BOOSEappTV.AppPenColour.ToString*
+  name: ToString
+  href: boose/BOOSEappTV.AppPenColour.html#BOOSEappTV_AppPenColour_ToString_
+  commentId: Overload:BOOSEappTV.AppPenColour.ToString
+  isSpec: "True"
+  fullName: BOOSEappTV.AppPenColour.ToString
+  nameWithType: AppPenColour.ToString
+- uid: BOOSEappTV.AppStar
+  name: AppStar
+  href: boose/BOOSEappTV.AppStar.html
+  commentId: T:BOOSEappTV.AppStar
+  fullName: BOOSEappTV.AppStar
+  nameWithType: AppStar
+- uid: BOOSEappTV.AppStar.#ctor
+  name: AppStar()
+  href: boose/BOOSEappTV.AppStar.html#BOOSEappTV_AppStar__ctor
+  commentId: M:BOOSEappTV.AppStar.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.AppStar.AppStar()
+  fullName.vb: BOOSEappTV.AppStar.New()
+  nameWithType: AppStar.AppStar()
+  nameWithType.vb: AppStar.New()
+- uid: BOOSEappTV.AppStar.#ctor(BOOSE.Canvas,System.Int32)
+  name: AppStar(Canvas, int)
+  href: boose/BOOSEappTV.AppStar.html#BOOSEappTV_AppStar__ctor_BOOSE_Canvas_System_Int32_
+  commentId: M:BOOSEappTV.AppStar.#ctor(BOOSE.Canvas,System.Int32)
+  name.vb: New(Canvas, Integer)
+  fullName: BOOSEappTV.AppStar.AppStar(BOOSE.Canvas, int)
+  fullName.vb: BOOSEappTV.AppStar.New(BOOSE.Canvas, Integer)
+  nameWithType: AppStar.AppStar(Canvas, int)
+  nameWithType.vb: AppStar.New(Canvas, Integer)
+- uid: BOOSEappTV.AppStar.#ctor*
+  name: AppStar
+  href: boose/BOOSEappTV.AppStar.html#BOOSEappTV_AppStar__ctor_
+  commentId: Overload:BOOSEappTV.AppStar.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.AppStar.AppStar
+  fullName.vb: BOOSEappTV.AppStar.New
+  nameWithType: AppStar.AppStar
+  nameWithType.vb: AppStar.New
+- uid: BOOSEappTV.AppStar.Execute
+  name: Execute()
+  href: boose/BOOSEappTV.AppStar.html#BOOSEappTV_AppStar_Execute
+  commentId: M:BOOSEappTV.AppStar.Execute
+  fullName: BOOSEappTV.AppStar.Execute()
+  nameWithType: AppStar.Execute()
+- uid: BOOSEappTV.AppStar.Execute*
+  name: Execute
+  href: boose/BOOSEappTV.AppStar.html#BOOSEappTV_AppStar_Execute_
+  commentId: Overload:BOOSEappTV.AppStar.Execute
+  isSpec: "True"
+  fullName: BOOSEappTV.AppStar.Execute
+  nameWithType: AppStar.Execute
+- uid: BOOSEappTV.BOOSEForm
+  name: BOOSEForm
+  href: boose/BOOSEappTV.BOOSEForm.html
+  commentId: T:BOOSEappTV.BOOSEForm
+  fullName: BOOSEappTV.BOOSEForm
+  nameWithType: BOOSEForm
+- uid: BOOSEappTV.BOOSEForm.#ctor
+  name: BOOSEForm()
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm__ctor
+  commentId: M:BOOSEappTV.BOOSEForm.#ctor
+  name.vb: New()
+  fullName: BOOSEappTV.BOOSEForm.BOOSEForm()
+  fullName.vb: BOOSEappTV.BOOSEForm.New()
+  nameWithType: BOOSEForm.BOOSEForm()
+  nameWithType.vb: BOOSEForm.New()
+- uid: BOOSEappTV.BOOSEForm.#ctor*
+  name: BOOSEForm
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm__ctor_
+  commentId: Overload:BOOSEappTV.BOOSEForm.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: BOOSEappTV.BOOSEForm.BOOSEForm
+  fullName.vb: BOOSEappTV.BOOSEForm.New
+  nameWithType: BOOSEForm.BOOSEForm
+  nameWithType.vb: BOOSEForm.New
+- uid: BOOSEappTV.BOOSEForm.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_Dispose_System_Boolean_
+  commentId: M:BOOSEappTV.BOOSEForm.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: BOOSEappTV.BOOSEForm.Dispose(bool)
+  fullName.vb: BOOSEappTV.BOOSEForm.Dispose(Boolean)
+  nameWithType: BOOSEForm.Dispose(bool)
+  nameWithType.vb: BOOSEForm.Dispose(Boolean)
+- uid: BOOSEappTV.BOOSEForm.Dispose*
+  name: Dispose
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_Dispose_
+  commentId: Overload:BOOSEappTV.BOOSEForm.Dispose
+  isSpec: "True"
+  fullName: BOOSEappTV.BOOSEForm.Dispose
+  nameWithType: BOOSEForm.Dispose
+- uid: BOOSEappTV.BOOSEForm.OnPaint(System.Windows.Forms.PaintEventArgs)
+  name: OnPaint(PaintEventArgs)
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_OnPaint_System_Windows_Forms_PaintEventArgs_
+  commentId: M:BOOSEappTV.BOOSEForm.OnPaint(System.Windows.Forms.PaintEventArgs)
+  fullName: BOOSEappTV.BOOSEForm.OnPaint(System.Windows.Forms.PaintEventArgs)
+  nameWithType: BOOSEForm.OnPaint(PaintEventArgs)
+- uid: BOOSEappTV.BOOSEForm.OnPaint*
+  name: OnPaint
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_OnPaint_
+  commentId: Overload:BOOSEappTV.BOOSEForm.OnPaint
+  isSpec: "True"
+  fullName: BOOSEappTV.BOOSEForm.OnPaint
+  nameWithType: BOOSEForm.OnPaint
+- uid: BOOSEappTV.BOOSEForm.OnResize(System.EventArgs)
+  name: OnResize(EventArgs)
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_OnResize_System_EventArgs_
+  commentId: M:BOOSEappTV.BOOSEForm.OnResize(System.EventArgs)
+  fullName: BOOSEappTV.BOOSEForm.OnResize(System.EventArgs)
+  nameWithType: BOOSEForm.OnResize(EventArgs)
+- uid: BOOSEappTV.BOOSEForm.OnResize*
+  name: OnResize
+  href: boose/BOOSEappTV.BOOSEForm.html#BOOSEappTV_BOOSEForm_OnResize_
+  commentId: Overload:BOOSEappTV.BOOSEForm.OnResize
+  isSpec: "True"
+  fullName: BOOSEappTV.BOOSEForm.OnResize
+  nameWithType: BOOSEForm.OnResize
+- uid: BOOSEappTV.IAppCanvas
+  name: IAppCanvas
+  href: boose/BOOSEappTV.IAppCanvas.html
+  commentId: T:BOOSEappTV.IAppCanvas
+  fullName: BOOSEappTV.IAppCanvas
+  nameWithType: IAppCanvas
+- uid: BOOSEappTV.IAppCanvas.DrawLabeledShape(System.String)
+  name: DrawLabeledShape(string)
+  href: boose/BOOSEappTV.IAppCanvas.html#BOOSEappTV_IAppCanvas_DrawLabeledShape_System_String_
+  commentId: M:BOOSEappTV.IAppCanvas.DrawLabeledShape(System.String)
+  name.vb: DrawLabeledShape(String)
+  fullName: BOOSEappTV.IAppCanvas.DrawLabeledShape(string)
+  fullName.vb: BOOSEappTV.IAppCanvas.DrawLabeledShape(String)
+  nameWithType: IAppCanvas.DrawLabeledShape(string)
+  nameWithType.vb: IAppCanvas.DrawLabeledShape(String)
+- uid: BOOSEappTV.IAppCanvas.DrawLabeledShape*
+  name: DrawLabeledShape
+  href: boose/BOOSEappTV.IAppCanvas.html#BOOSEappTV_IAppCanvas_DrawLabeledShape_
+  commentId: Overload:BOOSEappTV.IAppCanvas.DrawLabeledShape
+  isSpec: "True"
+  fullName: BOOSEappTV.IAppCanvas.DrawLabeledShape
+  nameWithType: IAppCanvas.DrawLabeledShape
+- uid: BOOSEappTV.IAppCanvas.Star(System.Int32,System.Boolean)
+  name: Star(int, bool)
+  href: boose/BOOSEappTV.IAppCanvas.html#BOOSEappTV_IAppCanvas_Star_System_Int32_System_Boolean_
+  commentId: M:BOOSEappTV.IAppCanvas.Star(System.Int32,System.Boolean)
+  name.vb: Star(Integer, Boolean)
+  fullName: BOOSEappTV.IAppCanvas.Star(int, bool)
+  fullName.vb: BOOSEappTV.IAppCanvas.Star(Integer, Boolean)
+  nameWithType: IAppCanvas.Star(int, bool)
+  nameWithType.vb: IAppCanvas.Star(Integer, Boolean)
+- uid: BOOSEappTV.IAppCanvas.Star*
+  name: Star
+  href: boose/BOOSEappTV.IAppCanvas.html#BOOSEappTV_IAppCanvas_Star_
+  commentId: Overload:BOOSEappTV.IAppCanvas.Star
+  isSpec: "True"
+  fullName: BOOSEappTV.IAppCanvas.Star
+  nameWithType: IAppCanvas.Star

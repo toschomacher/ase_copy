@@ -1,0 +1,70 @@
+{
+  "source_base_path": "C:/Users/Veselin/source/repos/ase-boose-assignment-toschomacher/BOOSEtests",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEtests.AppCommandsTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEtests.AppCommandsTests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEtests.AppCommandsTests",
+      "Summary": "<p sourcefile=\"boose/BOOSEtests.AppCommandsTests.yml\" sourcestartlinenumber=\"1\">A test class containing unit tests for core drawing commands and program execution within <xref href=\"BOOSEappTV.AppCanvas\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEtests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEtests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEtests",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "boose/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/toc.html"
+        },
+        ".json": {
+          "relative_path": "boose/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

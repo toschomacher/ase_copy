@@ -1,0 +1,10 @@
+### YamlMime:TableOfContent
+items:
+- uid: BOOSEtests
+  name: BOOSEtests
+  type: Namespace
+  items:
+  - uid: BOOSEtests.AppCommandsTests
+    name: AppCommandsTests
+    type: Class
+memberLayout: SamePage

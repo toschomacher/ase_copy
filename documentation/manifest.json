@@ -1,0 +1,196 @@
+{
+  "source_base_path": "C:/Users/Veselin/source/repos/ase-boose-assignment-toschomacher/BOOSEappTV",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppCanvas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppCanvas.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppCanvas",
+      "Summary": "<p sourcefile=\"boose/BOOSEappTV.AppCanvas.yml\" sourcestartlinenumber=\"1\">Custom canvas implementation that extends BOOSE.Canvas and adds application-specific features.\nThis class manages the drawing state, drawing surface (Bitmap), and basic geometric drawing operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppCircle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppCircle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppCircle",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppCommandFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppCommandFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppCommandFactory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppConsole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppConsole.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppConsole",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppDrawTo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppDrawTo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppDrawTo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppMoveTo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppMoveTo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppMoveTo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppPenColour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppPenColour.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppPenColour",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.AppStar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.AppStar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.AppStar",
+      "Summary": "<p sourcefile=\"boose/BOOSEappTV.AppStar.yml\" sourcestartlinenumber=\"1\">Command to draw a star shape using IAppCanvas.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.BOOSEForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.BOOSEForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.BOOSEForm",
+      "Summary": "<p sourcefile=\"boose/BOOSEappTV.BOOSEForm.yml\" sourcestartlinenumber=\"1\">Represents the main form of the BOOSEappTV application.\nProvides drawing functionality and handles user interactions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.IAppCanvas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.IAppCanvas.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV.IAppCanvas",
+      "Summary": "<p sourcefile=\"boose/BOOSEappTV.IAppCanvas.yml\" sourcestartlinenumber=\"1\">Extended canvas interface for custom BOOSE drawing commands.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "boose/BOOSEappTV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/BOOSEappTV.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BOOSEappTV",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "boose/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "boose/toc.html"
+        },
+        ".json": {
+          "relative_path": "boose/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

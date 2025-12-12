@@ -1,0 +1,1969 @@
+### YamlMime:ManagedReference
+items:
+- uid: BOOSEappTV.AppCanvas
+  commentId: T:BOOSEappTV.AppCanvas
+  id: AppCanvas
+  parent: BOOSEappTV
+  children:
+  - BOOSEappTV.AppCanvas.#ctor(System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.Circle(System.Int32,System.Boolean)
+  - BOOSEappTV.AppCanvas.Clear
+  - BOOSEappTV.AppCanvas.Current
+  - BOOSEappTV.AppCanvas.DrawTo(System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.GetCanvas
+  - BOOSEappTV.AppCanvas.HasLastCircle
+  - BOOSEappTV.AppCanvas.HasLastRect
+  - BOOSEappTV.AppCanvas.LastCircleRadius
+  - BOOSEappTV.AppCanvas.LastRectParameters
+  - BOOSEappTV.AppCanvas.MoveTo(System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.PenColour
+  - BOOSEappTV.AppCanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  - BOOSEappTV.AppCanvas.Reset
+  - BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.Tri(System.Int32,System.Int32)
+  - BOOSEappTV.AppCanvas.WriteText(System.String)
+  - BOOSEappTV.AppCanvas.XSize
+  - BOOSEappTV.AppCanvas.Xpos
+  - BOOSEappTV.AppCanvas.YSize
+  - BOOSEappTV.AppCanvas.Ypos
+  - BOOSEappTV.AppCanvas.background_colour
+  - BOOSEappTV.AppCanvas.getBitmap
+  langs:
+  - csharp
+  - vb
+  name: AppCanvas
+  nameWithType: AppCanvas
+  fullName: BOOSEappTV.AppCanvas
+  type: Class
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: AppCanvas
+    path: AppCanvas.cs
+    startLine: 10
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: >-
+    Custom canvas implementation that extends BOOSE.Canvas and adds application-specific features.
+
+    This class manages the drawing state, drawing surface (Bitmap), and basic geometric drawing operations.
+  example: []
+  syntax:
+    content: 'public class AppCanvas : Canvas, ICanvas'
+    content.vb: Public Class AppCanvas Inherits Canvas Implements ICanvas
+  inheritance:
+  - System.Object
+  - BOOSE.Canvas
+  implements:
+  - BOOSE.ICanvas
+  inheritedMembers:
+  - BOOSE.Canvas.Rectangle(System.Int32,System.Int32,System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: BOOSEappTV.AppCanvas.background_colour
+  commentId: F:BOOSEappTV.AppCanvas.background_colour
+  id: background_colour
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: background_colour
+  nameWithType: AppCanvas.background_colour
+  fullName: BOOSEappTV.AppCanvas.background_colour
+  type: Field
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: background_colour
+    path: AppCanvas.cs
+    startLine: 35
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: The default background colour used when clearing the canvas.
+  example: []
+  syntax:
+    content: protected Color background_colour
+    return:
+      type: System.Drawing.Color
+    content.vb: Protected background_colour As Color
+- uid: BOOSEappTV.AppCanvas.Current
+  commentId: P:BOOSEappTV.AppCanvas.Current
+  id: Current
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Current
+  nameWithType: AppCanvas.Current
+  fullName: BOOSEappTV.AppCanvas.Current
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Current
+    path: AppCanvas.cs
+    startLine: 58
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets the currently active instance of <xref href="BOOSEappTV.AppCanvas" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static AppCanvas Current { get; }
+    parameters: []
+    return:
+      type: BOOSEappTV.AppCanvas
+    content.vb: Public Shared Property Current As AppCanvas
+  overload: BOOSEappTV.AppCanvas.Current*
+- uid: BOOSEappTV.AppCanvas.#ctor(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: AppCanvas(int, int)
+  nameWithType: AppCanvas.AppCanvas(int, int)
+  fullName: BOOSEappTV.AppCanvas.AppCanvas(int, int)
+  type: Constructor
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: .ctor
+    path: AppCanvas.cs
+    startLine: 66
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Initializes a new instance of the <xref href="BOOSEappTV.AppCanvas" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public AppCanvas(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The initial width of the canvas in pixels.
+    - id: height
+      type: System.Int32
+      description: The initial height of the canvas in pixels.
+    content.vb: Public Sub New(width As Integer, height As Integer)
+  overload: BOOSEappTV.AppCanvas.#ctor*
+  nameWithType.vb: AppCanvas.New(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.Xpos
+  commentId: P:BOOSEappTV.AppCanvas.Xpos
+  id: Xpos
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Xpos
+  nameWithType: AppCanvas.Xpos
+  fullName: BOOSEappTV.AppCanvas.Xpos
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Xpos
+    path: AppCanvas.cs
+    startLine: 77
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets or sets the current X-coordinate of the drawing cursor.
+  example: []
+  syntax:
+    content: public int Xpos { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Xpos As Integer
+  overload: BOOSEappTV.AppCanvas.Xpos*
+  implements:
+  - BOOSE.ICanvas.Xpos
+- uid: BOOSEappTV.AppCanvas.Ypos
+  commentId: P:BOOSEappTV.AppCanvas.Ypos
+  id: Ypos
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Ypos
+  nameWithType: AppCanvas.Ypos
+  fullName: BOOSEappTV.AppCanvas.Ypos
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Ypos
+    path: AppCanvas.cs
+    startLine: 82
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets or sets the current Y-coordinate of the drawing cursor.
+  example: []
+  syntax:
+    content: public int Ypos { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Ypos As Integer
+  overload: BOOSEappTV.AppCanvas.Ypos*
+  implements:
+  - BOOSE.ICanvas.Ypos
+- uid: BOOSEappTV.AppCanvas.XSize
+  commentId: P:BOOSEappTV.AppCanvas.XSize
+  id: XSize
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: XSize
+  nameWithType: AppCanvas.XSize
+  fullName: BOOSEappTV.AppCanvas.XSize
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: XSize
+    path: AppCanvas.cs
+    startLine: 87
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets the current width of the canvas in pixels.
+  example: []
+  syntax:
+    content: public int XSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property XSize As Integer
+  overload: BOOSEappTV.AppCanvas.XSize*
+- uid: BOOSEappTV.AppCanvas.YSize
+  commentId: P:BOOSEappTV.AppCanvas.YSize
+  id: YSize
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: YSize
+  nameWithType: AppCanvas.YSize
+  fullName: BOOSEappTV.AppCanvas.YSize
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: YSize
+    path: AppCanvas.cs
+    startLine: 92
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets the current height of the canvas in pixels.
+  example: []
+  syntax:
+    content: public int YSize { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property YSize As Integer
+  overload: BOOSEappTV.AppCanvas.YSize*
+- uid: BOOSEappTV.AppCanvas.PenColour
+  commentId: P:BOOSEappTV.AppCanvas.PenColour
+  id: PenColour
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: PenColour
+  nameWithType: AppCanvas.PenColour
+  fullName: BOOSEappTV.AppCanvas.PenColour
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: PenColour
+    path: AppCanvas.cs
+    startLine: 98
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets or sets the pen colour. (Currently not implemented.)
+  example: []
+  syntax:
+    content: public object PenColour { get; set; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public Property PenColour As Object
+  overload: BOOSEappTV.AppCanvas.PenColour*
+  exceptions:
+  - type: System.NotImplementedException
+    commentId: T:System.NotImplementedException
+    description: Always thrown as this property is not yet implemented.
+  implements:
+  - BOOSE.ICanvas.PenColour
+- uid: BOOSEappTV.AppCanvas.Circle(System.Int32,System.Boolean)
+  commentId: M:BOOSEappTV.AppCanvas.Circle(System.Int32,System.Boolean)
+  id: Circle(System.Int32,System.Boolean)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Circle(int, bool)
+  nameWithType: AppCanvas.Circle(int, bool)
+  fullName: BOOSEappTV.AppCanvas.Circle(int, bool)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Circle
+    path: AppCanvas.cs
+    startLine: 105
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Draws a circle centered at the current cursor position (<xref href="BOOSEappTV.AppCanvas.Xpos" data-throw-if-not-resolved="false"></xref>, <xref href="BOOSEappTV.AppCanvas.Ypos" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: public void Circle(int radius, bool filled)
+    parameters:
+    - id: radius
+      type: System.Int32
+      description: The radius of the circle.
+    - id: filled
+      type: System.Boolean
+      description: If set to <code>true</code>, the circle is filled; otherwise, it is outlined.
+    content.vb: Public Sub Circle(radius As Integer, filled As Boolean)
+  overload: BOOSEappTV.AppCanvas.Circle*
+  implements:
+  - BOOSE.ICanvas.Circle(System.Int32,System.Boolean)
+  nameWithType.vb: AppCanvas.Circle(Integer, Boolean)
+  fullName.vb: BOOSEappTV.AppCanvas.Circle(Integer, Boolean)
+  name.vb: Circle(Integer, Boolean)
+- uid: BOOSEappTV.AppCanvas.Clear
+  commentId: M:BOOSEappTV.AppCanvas.Clear
+  id: Clear
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: AppCanvas.Clear()
+  fullName: BOOSEappTV.AppCanvas.Clear()
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Clear
+    path: AppCanvas.cs
+    startLine: 123
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Clears the canvas using the default background colour and resets the last drawn shape parameters.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: BOOSEappTV.AppCanvas.Clear*
+  implements:
+  - BOOSE.ICanvas.Clear
+- uid: BOOSEappTV.AppCanvas.DrawTo(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.DrawTo(System.Int32,System.Int32)
+  id: DrawTo(System.Int32,System.Int32)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: DrawTo(int, int)
+  nameWithType: AppCanvas.DrawTo(int, int)
+  fullName: BOOSEappTV.AppCanvas.DrawTo(int, int)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: DrawTo
+    path: AppCanvas.cs
+    startLine: 139
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: >-
+    Draws a line from the current cursor position to the specified coordinates (x, y)
+
+    and then updates the cursor position to (x, y).
+  example: []
+  syntax:
+    content: public void DrawTo(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The X-coordinate of the line's end point.
+    - id: y
+      type: System.Int32
+      description: The Y-coordinate of the line's end point.
+    content.vb: Public Sub DrawTo(x As Integer, y As Integer)
+  overload: BOOSEappTV.AppCanvas.DrawTo*
+  implements:
+  - BOOSE.ICanvas.DrawTo(System.Int32,System.Int32)
+  nameWithType.vb: AppCanvas.DrawTo(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.DrawTo(Integer, Integer)
+  name.vb: DrawTo(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.getBitmap
+  commentId: M:BOOSEappTV.AppCanvas.getBitmap
+  id: getBitmap
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: getBitmap()
+  nameWithType: AppCanvas.getBitmap()
+  fullName: BOOSEappTV.AppCanvas.getBitmap()
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: getBitmap
+    path: AppCanvas.cs
+    startLine: 151
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets the underlying <xref href="System.Drawing.Bitmap" data-throw-if-not-resolved="false"></xref> object used as the drawing surface.
+  example: []
+  syntax:
+    content: public object getBitmap()
+    return:
+      type: System.Object
+      description: The <xref href="System.Drawing.Bitmap" data-throw-if-not-resolved="false"></xref> instance.
+    content.vb: Public Function getBitmap() As Object
+  overload: BOOSEappTV.AppCanvas.getBitmap*
+  implements:
+  - BOOSE.ICanvas.getBitmap
+- uid: BOOSEappTV.AppCanvas.MoveTo(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.MoveTo(System.Int32,System.Int32)
+  id: MoveTo(System.Int32,System.Int32)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: MoveTo(int, int)
+  nameWithType: AppCanvas.MoveTo(int, int)
+  fullName: BOOSEappTV.AppCanvas.MoveTo(int, int)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: MoveTo
+    path: AppCanvas.cs
+    startLine: 161
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Moves the drawing cursor to the specified coordinates without drawing.
+  example: []
+  syntax:
+    content: public void MoveTo(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The new X-coordinate for the cursor.
+    - id: y
+      type: System.Int32
+      description: The new Y-coordinate for the cursor.
+    content.vb: Public Sub MoveTo(x As Integer, y As Integer)
+  overload: BOOSEappTV.AppCanvas.MoveTo*
+  implements:
+  - BOOSE.ICanvas.MoveTo(System.Int32,System.Int32)
+  nameWithType.vb: AppCanvas.MoveTo(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.MoveTo(Integer, Integer)
+  name.vb: MoveTo(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  commentId: M:BOOSEappTV.AppCanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  id: Rect(System.Int32,System.Int32,System.Boolean)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Rect(int, int, bool)
+  nameWithType: AppCanvas.Rect(int, int, bool)
+  fullName: BOOSEappTV.AppCanvas.Rect(int, int, bool)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Rect
+    path: AppCanvas.cs
+    startLine: 173
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Draws a rectangle starting from the current cursor position (<xref href="BOOSEappTV.AppCanvas.Xpos" data-throw-if-not-resolved="false"></xref>, <xref href="BOOSEappTV.AppCanvas.Ypos" data-throw-if-not-resolved="false"></xref>).
+  example: []
+  syntax:
+    content: public void Rect(int width, int height, bool filled)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The width of the rectangle.
+    - id: height
+      type: System.Int32
+      description: The height of the rectangle.
+    - id: filled
+      type: System.Boolean
+      description: If set to <code>true</code>, the rectangle is filled; otherwise, it is outlined.
+    content.vb: Public Sub Rect(width As Integer, height As Integer, filled As Boolean)
+  overload: BOOSEappTV.AppCanvas.Rect*
+  implements:
+  - BOOSE.ICanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  nameWithType.vb: AppCanvas.Rect(Integer, Integer, Boolean)
+  fullName.vb: BOOSEappTV.AppCanvas.Rect(Integer, Integer, Boolean)
+  name.vb: Rect(Integer, Integer, Boolean)
+- uid: BOOSEappTV.AppCanvas.Reset
+  commentId: M:BOOSEappTV.AppCanvas.Reset
+  id: Reset
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: AppCanvas.Reset()
+  fullName: BOOSEappTV.AppCanvas.Reset()
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Reset
+    path: AppCanvas.cs
+    startLine: 189
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Resets the drawing state (cursor position and pen size) and clears the canvas.
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: BOOSEappTV.AppCanvas.Reset*
+  implements:
+  - BOOSE.ICanvas.Reset
+- uid: BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  id: Set(System.Int32,System.Int32)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Set(int, int)
+  nameWithType: AppCanvas.Set(int, int)
+  fullName: BOOSEappTV.AppCanvas.Set(int, int)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Set
+    path: AppCanvas.cs
+    startLine: 204
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: >-
+    Reinitializes the canvas with new dimensions, disposes of old resources,
+
+    and resets the drawing state.
+  example: []
+  syntax:
+    content: public void Set(int xSize, int ySize)
+    parameters:
+    - id: xSize
+      type: System.Int32
+      description: The new width of the canvas.
+    - id: ySize
+      type: System.Int32
+      description: The new height of the canvas.
+    content.vb: Public Sub [Set](xSize As Integer, ySize As Integer)
+  overload: BOOSEappTV.AppCanvas.Set*
+  implements:
+  - BOOSE.ICanvas.Set(System.Int32,System.Int32)
+  nameWithType.vb: AppCanvas.Set(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.Set(Integer, Integer)
+  name.vb: Set(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  id: SetColour(System.Int32,System.Int32,System.Int32)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: SetColour(int, int, int)
+  nameWithType: AppCanvas.SetColour(int, int, int)
+  fullName: BOOSEappTV.AppCanvas.SetColour(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: SetColour
+    path: AppCanvas.cs
+    startLine: 237
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Sets the drawing colour for the pen and brush using RGB values.
+  example: []
+  syntax:
+    content: public void SetColour(int r, int g, int b)
+    parameters:
+    - id: r
+      type: System.Int32
+      description: The red component (0-255).
+    - id: g
+      type: System.Int32
+      description: The green component (0-255).
+    - id: b
+      type: System.Int32
+      description: The blue component (0-255).
+    content.vb: Public Sub SetColour(r As Integer, g As Integer, b As Integer)
+  overload: BOOSEappTV.AppCanvas.SetColour*
+  implements:
+  - BOOSE.ICanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  nameWithType.vb: AppCanvas.SetColour(Integer, Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.SetColour(Integer, Integer, Integer)
+  name.vb: SetColour(Integer, Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.Tri(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.Tri(System.Int32,System.Int32)
+  id: Tri(System.Int32,System.Int32)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: Tri(int, int)
+  nameWithType: AppCanvas.Tri(int, int)
+  fullName: BOOSEappTV.AppCanvas.Tri(int, int)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: Tri
+    path: AppCanvas.cs
+    startLine: 251
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Prepares the points for drawing a triangle (currently incomplete/not fully implemented).
+  example: []
+  syntax:
+    content: public void Tri(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The width of the triangle's base.
+    - id: height
+      type: System.Int32
+      description: The height of the triangle.
+    content.vb: Public Sub Tri(width As Integer, height As Integer)
+  overload: BOOSEappTV.AppCanvas.Tri*
+  implements:
+  - BOOSE.ICanvas.Tri(System.Int32,System.Int32)
+  nameWithType.vb: AppCanvas.Tri(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.Tri(Integer, Integer)
+  name.vb: Tri(Integer, Integer)
+- uid: BOOSEappTV.AppCanvas.WriteText(System.String)
+  commentId: M:BOOSEappTV.AppCanvas.WriteText(System.String)
+  id: WriteText(System.String)
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: WriteText(string)
+  nameWithType: AppCanvas.WriteText(string)
+  fullName: BOOSEappTV.AppCanvas.WriteText(string)
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: WriteText
+    path: AppCanvas.cs
+    startLine: 265
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Writes the specified text string onto the canvas at the current cursor position.
+  example: []
+  syntax:
+    content: public void WriteText(string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: The string to be drawn.
+    content.vb: Public Sub WriteText(text As String)
+  overload: BOOSEappTV.AppCanvas.WriteText*
+  implements:
+  - BOOSE.ICanvas.WriteText(System.String)
+  nameWithType.vb: AppCanvas.WriteText(String)
+  fullName.vb: BOOSEappTV.AppCanvas.WriteText(String)
+  name.vb: WriteText(String)
+- uid: BOOSEappTV.AppCanvas.LastCircleRadius
+  commentId: P:BOOSEappTV.AppCanvas.LastCircleRadius
+  id: LastCircleRadius
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: LastCircleRadius
+  nameWithType: AppCanvas.LastCircleRadius
+  fullName: BOOSEappTV.AppCanvas.LastCircleRadius
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: LastCircleRadius
+    path: AppCanvas.cs
+    startLine: 277
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: >-
+    Returns the radius of the last circle that was drawn, or -1 if none has been drawn
+
+    since the last <xref href="BOOSEappTV.AppCanvas.Clear" data-throw-if-not-resolved="false"></xref> or <xref href="BOOSEappTV.AppCanvas.Set(System.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> operation.
+  example: []
+  syntax:
+    content: public int LastCircleRadius { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property LastCircleRadius As Integer
+  overload: BOOSEappTV.AppCanvas.LastCircleRadius*
+- uid: BOOSEappTV.AppCanvas.HasLastCircle
+  commentId: P:BOOSEappTV.AppCanvas.HasLastCircle
+  id: HasLastCircle
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: HasLastCircle
+  nameWithType: AppCanvas.HasLastCircle
+  fullName: BOOSEappTV.AppCanvas.HasLastCircle
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: HasLastCircle
+    path: AppCanvas.cs
+    startLine: 282
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets a value indicating whether a circle has been drawn recently.
+  example: []
+  syntax:
+    content: public bool HasLastCircle { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasLastCircle As Boolean
+  overload: BOOSEappTV.AppCanvas.HasLastCircle*
+- uid: BOOSEappTV.AppCanvas.LastRectParameters
+  commentId: P:BOOSEappTV.AppCanvas.LastRectParameters
+  id: LastRectParameters
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: LastRectParameters
+  nameWithType: AppCanvas.LastRectParameters
+  fullName: BOOSEappTV.AppCanvas.LastRectParameters
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: LastRectParameters
+    path: AppCanvas.cs
+    startLine: 287
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Returns the dimensions (Width Height) of the last rectangle drawn, or "-1" if none.
+  example: []
+  syntax:
+    content: public string LastRectParameters { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property LastRectParameters As String
+  overload: BOOSEappTV.AppCanvas.LastRectParameters*
+- uid: BOOSEappTV.AppCanvas.HasLastRect
+  commentId: P:BOOSEappTV.AppCanvas.HasLastRect
+  id: HasLastRect
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: HasLastRect
+  nameWithType: AppCanvas.HasLastRect
+  fullName: BOOSEappTV.AppCanvas.HasLastRect
+  type: Property
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: HasLastRect
+    path: AppCanvas.cs
+    startLine: 292
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Gets a value indicating whether a rectangle has been drawn recently.
+  example: []
+  syntax:
+    content: public bool HasLastRect { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasLastRect As Boolean
+  overload: BOOSEappTV.AppCanvas.HasLastRect*
+- uid: BOOSEappTV.AppCanvas.GetCanvas
+  commentId: M:BOOSEappTV.AppCanvas.GetCanvas
+  id: GetCanvas
+  parent: BOOSEappTV.AppCanvas
+  langs:
+  - csharp
+  - vb
+  name: GetCanvas()
+  nameWithType: AppCanvas.GetCanvas()
+  fullName: BOOSEappTV.AppCanvas.GetCanvas()
+  type: Method
+  source:
+    remote:
+      path: BOOSEappTV/AppCanvas.cs
+      branch: main
+      repo: https://github.com/ASE2025repos/ase-boose-assignment-toschomacher
+    id: GetCanvas
+    path: AppCanvas.cs
+    startLine: 298
+  assemblies:
+  - BOOSEappTV
+  namespace: BOOSEappTV
+  summary: Returns the current <xref href="BOOSEappTV.AppCanvas" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public static AppCanvas GetCanvas()
+    return:
+      type: BOOSEappTV.AppCanvas
+      description: The static singleton instance of <xref href="BOOSEappTV.AppCanvas" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function GetCanvas() As AppCanvas
+  overload: BOOSEappTV.AppCanvas.GetCanvas*
+references:
+- uid: BOOSEappTV
+  commentId: N:BOOSEappTV
+  href: BOOSEappTV.html
+  name: BOOSEappTV
+  nameWithType: BOOSEappTV
+  fullName: BOOSEappTV
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: BOOSE.Canvas
+  commentId: T:BOOSE.Canvas
+  parent: BOOSE
+  isExternal: true
+  name: Canvas
+  nameWithType: Canvas
+  fullName: BOOSE.Canvas
+- uid: BOOSE.ICanvas
+  commentId: T:BOOSE.ICanvas
+  parent: BOOSE
+  isExternal: true
+  name: ICanvas
+  nameWithType: ICanvas
+  fullName: BOOSE.ICanvas
+- uid: BOOSE.Canvas.Rectangle(System.Int32,System.Int32,System.Boolean)
+  commentId: M:BOOSE.Canvas.Rectangle(System.Int32,System.Int32,System.Boolean)
+  parent: BOOSE.Canvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Rectangle(int, int, bool)
+  nameWithType: Canvas.Rectangle(int, int, bool)
+  fullName: BOOSE.Canvas.Rectangle(int, int, bool)
+  nameWithType.vb: Canvas.Rectangle(Integer, Integer, Boolean)
+  fullName.vb: BOOSE.Canvas.Rectangle(Integer, Integer, Boolean)
+  name.vb: Rectangle(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: BOOSE.Canvas.Rectangle(System.Int32,System.Int32,System.Boolean)
+    name: Rectangle
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: BOOSE.Canvas.Rectangle(System.Int32,System.Int32,System.Boolean)
+    name: Rectangle
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: BOOSE
+  commentId: N:BOOSE
+  isExternal: true
+  name: BOOSE
+  nameWithType: BOOSE
+  fullName: BOOSE
+- uid: System.Drawing.Color
+  commentId: T:System.Drawing.Color
+  parent: System.Drawing
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.drawing.color
+  name: Color
+  nameWithType: Color
+  fullName: System.Drawing.Color
+- uid: System.Drawing
+  commentId: N:System.Drawing
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Drawing
+  nameWithType: System.Drawing
+  fullName: System.Drawing
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Drawing
+    name: Drawing
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.drawing
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Drawing
+    name: Drawing
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.drawing
+- uid: BOOSEappTV.AppCanvas
+  commentId: T:BOOSEappTV.AppCanvas
+  parent: BOOSEappTV
+  href: BOOSEappTV.AppCanvas.html
+  name: AppCanvas
+  nameWithType: AppCanvas
+  fullName: BOOSEappTV.AppCanvas
+- uid: BOOSEappTV.AppCanvas.Current*
+  commentId: Overload:BOOSEappTV.AppCanvas.Current
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Current
+  name: Current
+  nameWithType: AppCanvas.Current
+  fullName: BOOSEappTV.AppCanvas.Current
+- uid: BOOSEappTV.AppCanvas.#ctor*
+  commentId: Overload:BOOSEappTV.AppCanvas.#ctor
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas__ctor_System_Int32_System_Int32_
+  name: AppCanvas
+  nameWithType: AppCanvas.AppCanvas
+  fullName: BOOSEappTV.AppCanvas.AppCanvas
+  nameWithType.vb: AppCanvas.New
+  fullName.vb: BOOSEappTV.AppCanvas.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: BOOSEappTV.AppCanvas.Xpos*
+  commentId: Overload:BOOSEappTV.AppCanvas.Xpos
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Xpos
+  name: Xpos
+  nameWithType: AppCanvas.Xpos
+  fullName: BOOSEappTV.AppCanvas.Xpos
+- uid: BOOSE.ICanvas.Xpos
+  commentId: P:BOOSE.ICanvas.Xpos
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: Xpos
+  nameWithType: ICanvas.Xpos
+  fullName: BOOSE.ICanvas.Xpos
+- uid: BOOSEappTV.AppCanvas.Ypos*
+  commentId: Overload:BOOSEappTV.AppCanvas.Ypos
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Ypos
+  name: Ypos
+  nameWithType: AppCanvas.Ypos
+  fullName: BOOSEappTV.AppCanvas.Ypos
+- uid: BOOSE.ICanvas.Ypos
+  commentId: P:BOOSE.ICanvas.Ypos
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: Ypos
+  nameWithType: ICanvas.Ypos
+  fullName: BOOSE.ICanvas.Ypos
+- uid: BOOSEappTV.AppCanvas.XSize*
+  commentId: Overload:BOOSEappTV.AppCanvas.XSize
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_XSize
+  name: XSize
+  nameWithType: AppCanvas.XSize
+  fullName: BOOSEappTV.AppCanvas.XSize
+- uid: BOOSEappTV.AppCanvas.YSize*
+  commentId: Overload:BOOSEappTV.AppCanvas.YSize
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_YSize
+  name: YSize
+  nameWithType: AppCanvas.YSize
+  fullName: BOOSEappTV.AppCanvas.YSize
+- uid: System.NotImplementedException
+  commentId: T:System.NotImplementedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.notimplementedexception
+  name: NotImplementedException
+  nameWithType: NotImplementedException
+  fullName: System.NotImplementedException
+- uid: BOOSEappTV.AppCanvas.PenColour*
+  commentId: Overload:BOOSEappTV.AppCanvas.PenColour
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_PenColour
+  name: PenColour
+  nameWithType: AppCanvas.PenColour
+  fullName: BOOSEappTV.AppCanvas.PenColour
+- uid: BOOSE.ICanvas.PenColour
+  commentId: P:BOOSE.ICanvas.PenColour
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: PenColour
+  nameWithType: ICanvas.PenColour
+  fullName: BOOSE.ICanvas.PenColour
+- uid: BOOSEappTV.AppCanvas.Xpos
+  commentId: P:BOOSEappTV.AppCanvas.Xpos
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Xpos
+  name: Xpos
+  nameWithType: AppCanvas.Xpos
+  fullName: BOOSEappTV.AppCanvas.Xpos
+- uid: BOOSEappTV.AppCanvas.Ypos
+  commentId: P:BOOSEappTV.AppCanvas.Ypos
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Ypos
+  name: Ypos
+  nameWithType: AppCanvas.Ypos
+  fullName: BOOSEappTV.AppCanvas.Ypos
+- uid: BOOSEappTV.AppCanvas.Circle*
+  commentId: Overload:BOOSEappTV.AppCanvas.Circle
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Circle_System_Int32_System_Boolean_
+  name: Circle
+  nameWithType: AppCanvas.Circle
+  fullName: BOOSEappTV.AppCanvas.Circle
+- uid: BOOSE.ICanvas.Circle(System.Int32,System.Boolean)
+  commentId: M:BOOSE.ICanvas.Circle(System.Int32,System.Boolean)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Circle(int, bool)
+  nameWithType: ICanvas.Circle(int, bool)
+  fullName: BOOSE.ICanvas.Circle(int, bool)
+  nameWithType.vb: ICanvas.Circle(Integer, Boolean)
+  fullName.vb: BOOSE.ICanvas.Circle(Integer, Boolean)
+  name.vb: Circle(Integer, Boolean)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Circle(System.Int32,System.Boolean)
+    name: Circle
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Circle(System.Int32,System.Boolean)
+    name: Circle
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: BOOSEappTV.AppCanvas.Clear*
+  commentId: Overload:BOOSEappTV.AppCanvas.Clear
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear
+  name: Clear
+  nameWithType: AppCanvas.Clear
+  fullName: BOOSEappTV.AppCanvas.Clear
+- uid: BOOSE.ICanvas.Clear
+  commentId: M:BOOSE.ICanvas.Clear
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: Clear()
+  nameWithType: ICanvas.Clear()
+  fullName: BOOSE.ICanvas.Clear()
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+- uid: BOOSEappTV.AppCanvas.DrawTo*
+  commentId: Overload:BOOSEappTV.AppCanvas.DrawTo
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_DrawTo_System_Int32_System_Int32_
+  name: DrawTo
+  nameWithType: AppCanvas.DrawTo
+  fullName: BOOSEappTV.AppCanvas.DrawTo
+- uid: BOOSE.ICanvas.DrawTo(System.Int32,System.Int32)
+  commentId: M:BOOSE.ICanvas.DrawTo(System.Int32,System.Int32)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: DrawTo(int, int)
+  nameWithType: ICanvas.DrawTo(int, int)
+  fullName: BOOSE.ICanvas.DrawTo(int, int)
+  nameWithType.vb: ICanvas.DrawTo(Integer, Integer)
+  fullName.vb: BOOSE.ICanvas.DrawTo(Integer, Integer)
+  name.vb: DrawTo(Integer, Integer)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.DrawTo(System.Int32,System.Int32)
+    name: DrawTo
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.DrawTo(System.Int32,System.Int32)
+    name: DrawTo
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Drawing.Bitmap
+  commentId: T:System.Drawing.Bitmap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.drawing.bitmap
+  name: Bitmap
+  nameWithType: Bitmap
+  fullName: System.Drawing.Bitmap
+- uid: BOOSEappTV.AppCanvas.getBitmap*
+  commentId: Overload:BOOSEappTV.AppCanvas.getBitmap
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_getBitmap
+  name: getBitmap
+  nameWithType: AppCanvas.getBitmap
+  fullName: BOOSEappTV.AppCanvas.getBitmap
+- uid: BOOSE.ICanvas.getBitmap
+  commentId: M:BOOSE.ICanvas.getBitmap
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: getBitmap()
+  nameWithType: ICanvas.getBitmap()
+  fullName: BOOSE.ICanvas.getBitmap()
+  spec.csharp:
+  - uid: BOOSE.ICanvas.getBitmap
+    name: getBitmap
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.getBitmap
+    name: getBitmap
+    isExternal: true
+  - name: (
+  - name: )
+- uid: BOOSEappTV.AppCanvas.MoveTo*
+  commentId: Overload:BOOSEappTV.AppCanvas.MoveTo
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_MoveTo_System_Int32_System_Int32_
+  name: MoveTo
+  nameWithType: AppCanvas.MoveTo
+  fullName: BOOSEappTV.AppCanvas.MoveTo
+- uid: BOOSE.ICanvas.MoveTo(System.Int32,System.Int32)
+  commentId: M:BOOSE.ICanvas.MoveTo(System.Int32,System.Int32)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: MoveTo(int, int)
+  nameWithType: ICanvas.MoveTo(int, int)
+  fullName: BOOSE.ICanvas.MoveTo(int, int)
+  nameWithType.vb: ICanvas.MoveTo(Integer, Integer)
+  fullName.vb: BOOSE.ICanvas.MoveTo(Integer, Integer)
+  name.vb: MoveTo(Integer, Integer)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.MoveTo(System.Int32,System.Int32)
+    name: MoveTo
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: BOOSEappTV.AppCanvas.Rect*
+  commentId: Overload:BOOSEappTV.AppCanvas.Rect
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Rect_System_Int32_System_Int32_System_Boolean_
+  name: Rect
+  nameWithType: AppCanvas.Rect
+  fullName: BOOSEappTV.AppCanvas.Rect
+- uid: BOOSE.ICanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  commentId: M:BOOSE.ICanvas.Rect(System.Int32,System.Int32,System.Boolean)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Rect(int, int, bool)
+  nameWithType: ICanvas.Rect(int, int, bool)
+  fullName: BOOSE.ICanvas.Rect(int, int, bool)
+  nameWithType.vb: ICanvas.Rect(Integer, Integer, Boolean)
+  fullName.vb: BOOSE.ICanvas.Rect(Integer, Integer, Boolean)
+  name.vb: Rect(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Rect(System.Int32,System.Int32,System.Boolean)
+    name: Rect
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Rect(System.Int32,System.Int32,System.Boolean)
+    name: Rect
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: BOOSEappTV.AppCanvas.Reset*
+  commentId: Overload:BOOSEappTV.AppCanvas.Reset
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Reset
+  name: Reset
+  nameWithType: AppCanvas.Reset
+  fullName: BOOSEappTV.AppCanvas.Reset
+- uid: BOOSE.ICanvas.Reset
+  commentId: M:BOOSE.ICanvas.Reset
+  parent: BOOSE.ICanvas
+  isExternal: true
+  name: Reset()
+  nameWithType: ICanvas.Reset()
+  fullName: BOOSE.ICanvas.Reset()
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Reset
+    name: Reset
+    isExternal: true
+  - name: (
+  - name: )
+- uid: BOOSEappTV.AppCanvas.Set*
+  commentId: Overload:BOOSEappTV.AppCanvas.Set
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_System_Int32_System_Int32_
+  name: Set
+  nameWithType: AppCanvas.Set
+  fullName: BOOSEappTV.AppCanvas.Set
+- uid: BOOSE.ICanvas.Set(System.Int32,System.Int32)
+  commentId: M:BOOSE.ICanvas.Set(System.Int32,System.Int32)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Set(int, int)
+  nameWithType: ICanvas.Set(int, int)
+  fullName: BOOSE.ICanvas.Set(int, int)
+  nameWithType.vb: ICanvas.Set(Integer, Integer)
+  fullName.vb: BOOSE.ICanvas.Set(Integer, Integer)
+  name.vb: Set(Integer, Integer)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Set(System.Int32,System.Int32)
+    name: Set
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Set(System.Int32,System.Int32)
+    name: Set
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: BOOSEappTV.AppCanvas.SetColour*
+  commentId: Overload:BOOSEappTV.AppCanvas.SetColour
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_SetColour_System_Int32_System_Int32_System_Int32_
+  name: SetColour
+  nameWithType: AppCanvas.SetColour
+  fullName: BOOSEappTV.AppCanvas.SetColour
+- uid: BOOSE.ICanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  commentId: M:BOOSE.ICanvas.SetColour(System.Int32,System.Int32,System.Int32)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: SetColour(int, int, int)
+  nameWithType: ICanvas.SetColour(int, int, int)
+  fullName: BOOSE.ICanvas.SetColour(int, int, int)
+  nameWithType.vb: ICanvas.SetColour(Integer, Integer, Integer)
+  fullName.vb: BOOSE.ICanvas.SetColour(Integer, Integer, Integer)
+  name.vb: SetColour(Integer, Integer, Integer)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.SetColour(System.Int32,System.Int32,System.Int32)
+    name: SetColour
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.SetColour(System.Int32,System.Int32,System.Int32)
+    name: SetColour
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: BOOSEappTV.AppCanvas.Tri*
+  commentId: Overload:BOOSEappTV.AppCanvas.Tri
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Tri_System_Int32_System_Int32_
+  name: Tri
+  nameWithType: AppCanvas.Tri
+  fullName: BOOSEappTV.AppCanvas.Tri
+- uid: BOOSE.ICanvas.Tri(System.Int32,System.Int32)
+  commentId: M:BOOSE.ICanvas.Tri(System.Int32,System.Int32)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: Tri(int, int)
+  nameWithType: ICanvas.Tri(int, int)
+  fullName: BOOSE.ICanvas.Tri(int, int)
+  nameWithType.vb: ICanvas.Tri(Integer, Integer)
+  fullName.vb: BOOSE.ICanvas.Tri(Integer, Integer)
+  name.vb: Tri(Integer, Integer)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.Tri(System.Int32,System.Int32)
+    name: Tri
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.Tri(System.Int32,System.Int32)
+    name: Tri
+    isExternal: true
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: BOOSEappTV.AppCanvas.WriteText*
+  commentId: Overload:BOOSEappTV.AppCanvas.WriteText
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_WriteText_System_String_
+  name: WriteText
+  nameWithType: AppCanvas.WriteText
+  fullName: BOOSEappTV.AppCanvas.WriteText
+- uid: BOOSE.ICanvas.WriteText(System.String)
+  commentId: M:BOOSE.ICanvas.WriteText(System.String)
+  parent: BOOSE.ICanvas
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: WriteText(string)
+  nameWithType: ICanvas.WriteText(string)
+  fullName: BOOSE.ICanvas.WriteText(string)
+  nameWithType.vb: ICanvas.WriteText(String)
+  fullName.vb: BOOSE.ICanvas.WriteText(String)
+  name.vb: WriteText(String)
+  spec.csharp:
+  - uid: BOOSE.ICanvas.WriteText(System.String)
+    name: WriteText
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: BOOSE.ICanvas.WriteText(System.String)
+    name: WriteText
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: BOOSEappTV.AppCanvas.Clear
+  commentId: M:BOOSEappTV.AppCanvas.Clear
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear
+  name: Clear()
+  nameWithType: AppCanvas.Clear()
+  fullName: BOOSEappTV.AppCanvas.Clear()
+  spec.csharp:
+  - uid: BOOSEappTV.AppCanvas.Clear
+    name: Clear
+    href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: BOOSEappTV.AppCanvas.Clear
+    name: Clear
+    href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Clear
+  - name: (
+  - name: )
+- uid: BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  commentId: M:BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+  isExternal: true
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_System_Int32_System_Int32_
+  name: Set(int, int)
+  nameWithType: AppCanvas.Set(int, int)
+  fullName: BOOSEappTV.AppCanvas.Set(int, int)
+  nameWithType.vb: AppCanvas.Set(Integer, Integer)
+  fullName.vb: BOOSEappTV.AppCanvas.Set(Integer, Integer)
+  name.vb: Set(Integer, Integer)
+  spec.csharp:
+  - uid: BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+    name: Set
+    href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: BOOSEappTV.AppCanvas.Set(System.Int32,System.Int32)
+    name: Set
+    href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_Set_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: BOOSEappTV.AppCanvas.LastCircleRadius*
+  commentId: Overload:BOOSEappTV.AppCanvas.LastCircleRadius
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastCircleRadius
+  name: LastCircleRadius
+  nameWithType: AppCanvas.LastCircleRadius
+  fullName: BOOSEappTV.AppCanvas.LastCircleRadius
+- uid: BOOSEappTV.AppCanvas.HasLastCircle*
+  commentId: Overload:BOOSEappTV.AppCanvas.HasLastCircle
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastCircle
+  name: HasLastCircle
+  nameWithType: AppCanvas.HasLastCircle
+  fullName: BOOSEappTV.AppCanvas.HasLastCircle
+- uid: BOOSEappTV.AppCanvas.LastRectParameters*
+  commentId: Overload:BOOSEappTV.AppCanvas.LastRectParameters
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_LastRectParameters
+  name: LastRectParameters
+  nameWithType: AppCanvas.LastRectParameters
+  fullName: BOOSEappTV.AppCanvas.LastRectParameters
+- uid: BOOSEappTV.AppCanvas.HasLastRect*
+  commentId: Overload:BOOSEappTV.AppCanvas.HasLastRect
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_HasLastRect
+  name: HasLastRect
+  nameWithType: AppCanvas.HasLastRect
+  fullName: BOOSEappTV.AppCanvas.HasLastRect
+- uid: BOOSEappTV.AppCanvas.GetCanvas*
+  commentId: Overload:BOOSEappTV.AppCanvas.GetCanvas
+  href: BOOSEappTV.AppCanvas.html#BOOSEappTV_AppCanvas_GetCanvas
+  name: GetCanvas
+  nameWithType: AppCanvas.GetCanvas
+  fullName: BOOSEappTV.AppCanvas.GetCanvas

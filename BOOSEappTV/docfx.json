@@ -1,0 +1,35 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "cwd": ".",
+          "files": ["**/*.csproj"]
+        }
+      ],
+      "dest": "boose"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["index.md"]
+      },
+      {
+        "files": ["boose/**.yml"]
+      }
+    ],
+    "output": "../documentation",
+    "globalMetadata": {
+      "_appName": "BOOSEappTV Docs",
+      "_appTitle": "mysite",
+      "_enableSearch": true,
+      "pdf": true
+    }
+  },
+  "resource": [
+    {
+      "files": ["images/**"]
+    }
+  ]
+}

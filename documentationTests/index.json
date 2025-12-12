@@ -1,0 +1,17 @@
+{
+  "boose/BOOSEtests.AppCommandsTests.html": {
+    "href": "boose/BOOSEtests.AppCommandsTests.html",
+    "title": "Class AppCommandsTests | mysite",
+    "summary": "Class AppCommandsTests A test class containing unit tests for core drawing commands and program execution within BOOSEappTV.AppCanvas. Inheritance object AppCommandsTests Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Namespace: BOOSEtests Assembly: BOOSEtests.dll Syntax [TestClass] public sealed class AppCommandsTests Methods | Edit this page View Source Execute_DrawTo_UpdatesXandYpositions() Tests that the DrawTo(int, int) command correctly updates the X and Y cursor positions after drawing a line. Declaration [TestMethod] public void Execute_DrawTo_UpdatesXandYpositions() | Edit this page View Source Execute_MoveTo_UpdatesXandYpositions() Tests that the MoveTo(int, int) command correctly updates the X and Y cursor positions. Declaration [TestMethod] public void Execute_MoveTo_UpdatesXandYpositions() | Edit this page View Source Execute_MultilineProgram_CheckXYpositionsAtTheEnd() Tests the execution of a multi-line program script, ensuring the final X and Y positions of the cursor are correct. This test validates the sequence of commands (moveto, circle, rect) processed by the parser and stored program. Declaration [TestMethod] public void Execute_MultilineProgram_CheckXYpositionsAtTheEnd()"
+  },
+  "boose/BOOSEtests.html": {
+    "href": "boose/BOOSEtests.html",
+    "title": "Namespace BOOSEtests | mysite",
+    "summary": "Namespace BOOSEtests Classes AppCommandsTests A test class containing unit tests for core drawing commands and program execution within BOOSEappTV.AppCanvas."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "BOOSETests Documentation | mysite",
+    "summary": "BOOSETests Documentation Welcome to the documentation for BOOSE_Unit_Tests. API Reference Browse the full API index or explore individual components: BOOSETests"
+  }
+}

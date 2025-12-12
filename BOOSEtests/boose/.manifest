@@ -1,0 +1,7 @@
+{
+  "BOOSEtests": "BOOSEtests.yml",
+  "BOOSEtests.AppCommandsTests": "BOOSEtests.AppCommandsTests.yml",
+  "BOOSEtests.AppCommandsTests.Execute_DrawTo_UpdatesXandYpositions": "BOOSEtests.AppCommandsTests.yml",
+  "BOOSEtests.AppCommandsTests.Execute_MoveTo_UpdatesXandYpositions": "BOOSEtests.AppCommandsTests.yml",
+  "BOOSEtests.AppCommandsTests.Execute_MultilineProgram_CheckXYpositionsAtTheEnd": "BOOSEtests.AppCommandsTests.yml"
+}
