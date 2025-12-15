@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using BOOSE;
+﻿using BOOSE;
 
 namespace BOOSEappTV
 {
     public class AppCommandFactory : CommandFactory
     {
-        /// <inheritdoc/>
         public override ICommand MakeCommand(string commandType)
         {
-            AppConsole.WriteLine("My AppCommandFactory method called");
             switch (commandType.ToLower().Trim())
             {
                 case "star":
@@ -30,19 +22,13 @@ namespace BOOSEappTV
                     return new AppWrite();
                 case "drawto":
                     return new AppDrawTo();
+                case "int":
+                    return new AppInt();
+
                 default:
-                    try
-                    {
-                        return base.MakeCommand(commandType); // Call base (CommandFactory) for unknown commands
-                    }
-                    catch (BOOSE.BOOSEException)
-                    {
-                        // throw new ArgumentException($"Unknown command type: {commandType}");
-                        AppConsole.WriteLine($"Unknown command type: {commandType}");
-                        return null;
-                    }
+                    try { return base.MakeCommand(commandType); }
+                    catch { return null; }
             }
         }
     }
 }
-
