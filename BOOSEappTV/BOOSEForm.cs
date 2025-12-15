@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Windows.Forms; // This using directive is for MessageBox
 using BOOSE;
 using System.Diagnostics;
@@ -12,8 +12,8 @@ namespace BOOSEappTV
     public partial class BOOSEForm : Form
     {
         private AppCanvas myCanvas;
-        CommandFactory commandFactory;
-        StoredProgram storedProgram;
+        AppCommandFactory commandFactory;
+        AppStoredProgram storedProgram;
         IParser parser;
         string infoBOOSE = AboutBOOSE.about();
         bool mouseDown = false;
@@ -28,7 +28,8 @@ namespace BOOSEappTV
             myCanvas = new AppCanvas(this.outputBox.ClientSize.Width, this.outputBox.ClientSize.Height);
             AppConsole.Initialize(consoleBox);
             commandFactory = new AppCommandFactory();
-            storedProgram = new StoredProgram(myCanvas);
+            storedProgram = new AppStoredProgram(myCanvas);
+            storedProgram.ResetProgram(); // try this first
             parser = new Parser(commandFactory, storedProgram);
         }
 
@@ -161,7 +162,7 @@ namespace BOOSEappTV
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Paint event data including graphics context.</param>
-        private void parserBtn_Click(object sender, EventArgs e)
+        /*private void parserBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -177,7 +178,35 @@ namespace BOOSEappTV
             {
                 AppConsole.WriteLine("Null refference exception triggered");
             }
+        }*/
+        private void parserBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                parser.ParseProgram(commandsBox.Text);
+                storedProgram.Run();
+
+                // 🔍 DEBUG: verify variable storage
+                if (storedProgram.VariableExists("num"))
+                {
+                    var v = storedProgram.GetVariable("num");
+                    AppConsole.WriteLine($"[DEBUG] Variable 'num' exists, value = {v.Value}");
+                }
+                else
+                {
+                    AppConsole.WriteLine("[DEBUG] Variable 'num' does NOT exist");
+                }
+            }
+            catch (BOOSE.StoredProgramException ex)
+            {
+                AppConsole.WriteLine(ex.ToString());
+            }
+            catch (System.NullReferenceException)
+            {
+                AppConsole.WriteLine("Null reference exception triggered");
+            }
         }
+
 
         /// <summary>
         /// This method is called when the "Clear commands" button is pressed and it will clear the commandsBox text.

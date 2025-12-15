@@ -14,9 +14,6 @@ namespace BOOSEappTV
         public new int Value { get; set; } = 0;
         public new string Expression { get; set; } = string.Empty;
 
-        // Reference to stored program
-        public new StoredProgram Program { get; set; } = null!;
-
         object IEvaluation.Value { get => Value; set => throw new NotImplementedException(); }
 
         // ----- ICommand methods -----
@@ -26,15 +23,19 @@ namespace BOOSEappTV
                 throw new CommandException("Int requires at least a variable name.");
         }
 
+        /// <summary>
+        /// Sets the program reference and parses the parameters string "varName = expression"
+        /// </summary>
         public void Set(StoredProgram program, string parameters)
         {
-            Program = program ?? throw new ArgumentNullException(nameof(program));
+            // assign the base property
+            base.Program = program ?? throw new ArgumentNullException(nameof(program));
 
-            // Split "varName = expression"
             var parts = parameters.Split('=', StringSplitOptions.TrimEntries);
             if (parts.Length > 0) VarName = parts[0];
             if (parts.Length > 1) Expression = parts[1];
         }
+
 
         public override void Compile()
         {
@@ -44,46 +45,41 @@ namespace BOOSEappTV
             if (Program == null)
                 throw new InvalidOperationException("Program reference not set.");
 
-            int intValue;
-
-            // If variable exists, update its value
-            if (Program.VariableExists(VarName))
-            {
-                var rhsResult = Program.EvaluateExpression(Expression);
-                intValue = Convert.ToInt32(rhsResult);
-                Program.UpdateVariable(VarName, intValue);
-                Value = intValue;
-                return;
-            }
-
-            // First-time creation
+            // ONLY syntax validation here
             if (!string.IsNullOrWhiteSpace(Expression))
             {
-                if (int.TryParse(Expression, out int parsed))
-                {
-                    intValue = parsed;
-                }
-                else
-                {
-                    if (!Program.VariableExists(Expression))
-                        throw new ParserException($"Undefined variable '{Expression}' for int '{VarName}'.");
-
-                    var referenced = Program.GetVariable(Expression);
-                    intValue = Convert.ToInt32(referenced.Value);
-                }
+                if (!Program.IsExpression(Expression) && !int.TryParse(Expression, out _))
+                    throw new ParserException($"Invalid expression '{Expression}'");
             }
-            else
-            {
-                intValue = 0; // default
-            }
-
-            Value = intValue;
-            Program.AddVariable(this);
         }
+
+
+
 
         public override void Execute()
         {
-            // Assignment handled in Compile()
+            int intValue;
+
+            if (!string.IsNullOrWhiteSpace(Expression))
+            {
+                var result = Program.EvaluateExpression(Expression);
+                intValue = Convert.ToInt32(result);
+            }
+            else
+            {
+                intValue = 0;
+            }
+
+            if (Program.VariableExists(VarName))
+                Program.UpdateVariable(VarName, intValue);
+            else
+                Program.AddVariable(this);
+
+            Value = intValue;
+            Program.AddVariable(this);   // ✅ REQUIRED
+
         }
+
+
     }
 }
