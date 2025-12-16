@@ -162,23 +162,6 @@ namespace BOOSEappTV
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Paint event data including graphics context.</param>
-        /*private void parserBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                parser.ParseProgram(commandsBox.Text);
-                storedProgram.Run();
-            }
-            catch (BOOSE.StoredProgramException ex)
-            {
-                AppConsole.WriteLine(ex.ToString());
-                //MessageBox.Show(ex.Message + "\n\n" + ex.ToString(), "Runtime error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.NullReferenceException)
-            {
-                AppConsole.WriteLine("Null refference exception triggered");
-            }
-        }*/
         private void parserBtn_Click(object sender, EventArgs e)
         {
             try

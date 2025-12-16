@@ -33,6 +33,7 @@ namespace BOOSEappTV
 
             var parts = parameters.Split('=', StringSplitOptions.TrimEntries);
             if (parts.Length > 0) VarName = parts[0];
+            varName = VarName;
             if (parts.Length > 1) Expression = parts[1];
         }
 
@@ -40,20 +41,48 @@ namespace BOOSEappTV
         public override void Compile()
         {
             if (string.IsNullOrWhiteSpace(VarName))
-                throw new VarException("Variable name required.");
+                throw new VarException("Variable name required");
 
             if (Program == null)
-                throw new InvalidOperationException("Program reference not set.");
+                throw new InvalidOperationException("Program not set");
 
-            // ONLY syntax validation here
+            // Evaluate expression first (if any)
+            int intValue = 0;
             if (!string.IsNullOrWhiteSpace(Expression))
             {
-                if (!Program.IsExpression(Expression) && !int.TryParse(Expression, out _))
-                    throw new ParserException($"Invalid expression '{Expression}'");
+                try
+                {
+                    var result = Program.EvaluateExpression(Expression);
+                    intValue = Convert.ToInt32(result);
+                }
+                catch (Exception ex)
+                {
+                    AppConsole.WriteLine($"[DEBUG] Failed to evaluate expression '{Expression}': {ex.Message}");
+                    intValue = 0;
+                }
+            }
+
+            // Assign to Value property
+            Value = intValue;
+
+            // Declare variable if it doesn't exist
+            if (!Program.VariableExists(VarName))
+            {
+                Program.AddVariable(this);
+
+                AppConsole.WriteLine(
+                    $"[DEBUG] Variable '{VarName}' declared (initial value = {Value})"
+                );
+            }
+            else
+            {
+                // Update existing variable at compile time
+                Program.UpdateVariable(VarName, Value);
+                AppConsole.WriteLine(
+                    $"[DEBUG] Variable '{VarName}' already exists, updated value = {Value}"
+                );
             }
         }
-
-
 
 
         public override void Execute()
@@ -70,15 +99,14 @@ namespace BOOSEappTV
                 intValue = 0;
             }
 
-            if (Program.VariableExists(VarName))
-                Program.UpdateVariable(VarName, intValue);
-            else
-                Program.AddVariable(this);
-
+            Program.UpdateVariable(VarName, intValue);
             Value = intValue;
-            Program.AddVariable(this);   // ✅ REQUIRED
 
+            AppConsole.WriteLine(
+                $"[DEBUG] Stored '{VarName}' = {Value}"
+            );
         }
+
 
 
     }

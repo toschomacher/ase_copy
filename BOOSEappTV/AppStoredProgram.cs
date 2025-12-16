@@ -13,12 +13,11 @@ namespace BOOSEappTV
         public AppStoredProgram(ICanvas canvas) : base(canvas) { }
 
         // Override AddVariable with correct signature
-        public void AddVariable(AppInt variable)
+        public override void AddVariable(Evaluation variable)
         {
-            base.AddVariable(variable); // call base method to actually store the variable
+            // call base so BOOSE’s internal variable list is created and updated
+            base.AddVariable(variable);
         }
-
-
 
         // Override EvaluateExpression to return string (as per documentation)
         public override string EvaluateExpression(string expression)
