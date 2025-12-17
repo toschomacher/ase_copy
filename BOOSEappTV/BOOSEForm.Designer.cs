@@ -37,14 +37,17 @@
             commandsLbl = new Label();
             consoleLbl = new Label();
             consoleBox = new RichTextBox();
+            checkComReset = new CheckBox();
+            clearConsole = new Button();
             ((System.ComponentModel.ISupportInitialize)outputBox).BeginInit();
             SuspendLayout();
             // 
             // aboutBtn
             // 
-            aboutBtn.Location = new Point(241, 478);
+            aboutBtn.Location = new Point(344, 793);
+            aboutBtn.Margin = new Padding(4, 5, 4, 5);
             aboutBtn.Name = "aboutBtn";
-            aboutBtn.Size = new Size(93, 26);
+            aboutBtn.Size = new Size(133, 47);
             aboutBtn.TabIndex = 0;
             aboutBtn.Text = "About BOOSE";
             aboutBtn.UseVisualStyleBackColor = true;
@@ -54,20 +57,18 @@
             // 
             commandsBox.BackColor = Color.FromArgb(50, 48, 49);
             commandsBox.ForeColor = Color.LawnGreen;
-            commandsBox.Location = new Point(7, 26);
-            commandsBox.Margin = new Padding(2);
+            commandsBox.Location = new Point(10, 33);
             commandsBox.Multiline = true;
             commandsBox.Name = "commandsBox";
-            commandsBox.Size = new Size(328, 249);
+            commandsBox.Size = new Size(467, 395);
             commandsBox.TabIndex = 1;
             commandsBox.TextChanged += commandsBox_TextChanged;
             // 
             // outputBox
             // 
-            outputBox.Location = new Point(351, 4);
-            outputBox.Margin = new Padding(2);
+            outputBox.Location = new Point(501, 7);
             outputBox.Name = "outputBox";
-            outputBox.Size = new Size(748, 500);
+            outputBox.Size = new Size(1069, 833);
             outputBox.TabIndex = 2;
             outputBox.TabStop = false;
             outputBox.MouseDown += outputBox_MouseDown;
@@ -78,10 +79,9 @@
             // 
             compileBtn.BackColor = Color.SeaShell;
             compileBtn.Enabled = false;
-            compileBtn.Location = new Point(7, 279);
-            compileBtn.Margin = new Padding(2);
+            compileBtn.Location = new Point(10, 470);
             compileBtn.Name = "compileBtn";
-            compileBtn.Size = new Size(93, 28);
+            compileBtn.Size = new Size(133, 47);
             compileBtn.TabIndex = 3;
             compileBtn.Text = "Compile";
             compileBtn.UseVisualStyleBackColor = false;
@@ -90,10 +90,9 @@
             // clearBtn
             // 
             clearBtn.Enabled = false;
-            clearBtn.Location = new Point(113, 279);
-            clearBtn.Margin = new Padding(2);
+            clearBtn.Location = new Point(161, 470);
             clearBtn.Name = "clearBtn";
-            clearBtn.Size = new Size(115, 28);
+            clearBtn.Size = new Size(164, 47);
             clearBtn.TabIndex = 4;
             clearBtn.Text = "Clear commands";
             clearBtn.UseVisualStyleBackColor = true;
@@ -101,10 +100,9 @@
             // 
             // canClearBtn
             // 
-            canClearBtn.Location = new Point(241, 279);
-            canClearBtn.Margin = new Padding(2);
+            canClearBtn.Location = new Point(344, 470);
             canClearBtn.Name = "canClearBtn";
-            canClearBtn.Size = new Size(93, 28);
+            canClearBtn.Size = new Size(133, 47);
             canClearBtn.TabIndex = 6;
             canClearBtn.Text = "Clear canvas";
             canClearBtn.UseVisualStyleBackColor = true;
@@ -114,10 +112,9 @@
             // 
             commandsLbl.AutoSize = true;
             commandsLbl.ForeColor = SystemColors.ButtonFace;
-            commandsLbl.Location = new Point(7, 10);
-            commandsLbl.Margin = new Padding(2, 0, 2, 0);
+            commandsLbl.Location = new Point(10, 7);
             commandsLbl.Name = "commandsLbl";
-            commandsLbl.Size = new Size(138, 15);
+            commandsLbl.Size = new Size(209, 25);
             commandsLbl.TabIndex = 8;
             commandsLbl.Text = "BOOSE commands input";
             // 
@@ -125,30 +122,52 @@
             // 
             consoleLbl.AutoSize = true;
             consoleLbl.ForeColor = SystemColors.ButtonFace;
-            consoleLbl.Location = new Point(7, 318);
-            consoleLbl.Margin = new Padding(2, 0, 2, 0);
+            consoleLbl.Location = new Point(10, 520);
             consoleLbl.Name = "consoleLbl";
-            consoleLbl.Size = new Size(89, 15);
+            consoleLbl.Size = new Size(135, 25);
             consoleLbl.TabIndex = 9;
             consoleLbl.Text = "Console output";
             // 
             // consoleBox
             // 
-            consoleBox.Location = new Point(7, 335);
-            consoleBox.Margin = new Padding(2);
+            consoleBox.Location = new Point(10, 548);
             consoleBox.Name = "consoleBox";
-            consoleBox.Size = new Size(340, 143);
+            consoleBox.Size = new Size(484, 236);
             consoleBox.TabIndex = 10;
             consoleBox.Text = "";
             // 
+            // checkComReset
+            // 
+            checkComReset.AutoSize = true;
+            checkComReset.ForeColor = SystemColors.ButtonFace;
+            checkComReset.Location = new Point(10, 435);
+            checkComReset.Name = "checkComReset";
+            checkComReset.Size = new Size(302, 29);
+            checkComReset.TabIndex = 11;
+            checkComReset.Text = "Reset commands before Compile";
+            checkComReset.UseVisualStyleBackColor = true;
+            checkComReset.CheckedChanged += checkComReset_CheckedChanged;
+            // 
+            // clearConsole
+            // 
+            clearConsole.Location = new Point(161, 793);
+            clearConsole.Name = "clearConsole";
+            clearConsole.Size = new Size(164, 47);
+            clearConsole.TabIndex = 12;
+            clearConsole.Text = "Clear console";
+            clearConsole.UseVisualStyleBackColor = true;
+            clearConsole.Click += clearConsole_Click;
+            // 
             // BOOSEForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(1106, 508);
-            Controls.Add(outputBox);
+            ClientSize = new Size(1580, 847);
+            Controls.Add(clearConsole);
             Controls.Add(consoleBox);
+            Controls.Add(checkComReset);
+            Controls.Add(outputBox);
             Controls.Add(consoleLbl);
             Controls.Add(commandsLbl);
             Controls.Add(canClearBtn);
@@ -157,7 +176,7 @@
             Controls.Add(commandsBox);
             Controls.Add(aboutBtn);
             DoubleBuffered = true;
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "BOOSEForm";
             Text = "BOOSE compiler";
             Load += BOOSEForm_Load;
@@ -179,5 +198,7 @@
         private Label commandsLbl;
         private Label consoleLbl;
         private RichTextBox consoleBox;
+        private CheckBox checkComReset;
+        private Button clearConsole;
     }
 }

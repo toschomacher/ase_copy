@@ -17,6 +17,7 @@ namespace BOOSEappTV
         IParser parser;
         string infoBOOSE = AboutBOOSE.about();
         bool mouseDown = false;
+        bool resetCommands = false;
 
         /// <summary>
         /// Initialises a new instance of the BOOSEForm class.
@@ -27,9 +28,8 @@ namespace BOOSEappTV
             InitializeComponent();
             myCanvas = new AppCanvas(this.outputBox.ClientSize.Width, this.outputBox.ClientSize.Height);
             AppConsole.Initialize(consoleBox);
-            commandFactory = new AppCommandFactory();
             storedProgram = new AppStoredProgram(myCanvas);
-            storedProgram.ResetProgram(); // try this first
+            commandFactory = new AppCommandFactory();
             parser = new Parser(commandFactory, storedProgram);
         }
 
@@ -166,10 +166,16 @@ namespace BOOSEappTV
         {
             try
             {
+                // IMPORTANT: don’t keep old commands from previous compiles
+                if (resetCommands)
+                {
+                    storedProgram.Clear();
+                    storedProgram.ResetProgram();
+                }
                 parser.ParseProgram(commandsBox.Text);
                 storedProgram.Run();
 
-                // 🔍 DEBUG: verify variable storage
+                /* 🔍 DEBUG: verify variable storage
                 if (storedProgram.VariableExists("num"))
                 {
                     var v = storedProgram.GetVariable("num");
@@ -178,7 +184,11 @@ namespace BOOSEappTV
                 else
                 {
                     AppConsole.WriteLine("[DEBUG] Variable 'num' does NOT exist");
-                }
+                }*/
+            }
+            catch (BOOSE.ParserException ex)
+            {
+                AppConsole.WriteLine(ex.ToString());
             }
             catch (BOOSE.StoredProgramException ex)
             {
@@ -187,6 +197,10 @@ namespace BOOSEappTV
             catch (System.NullReferenceException)
             {
                 AppConsole.WriteLine("Null reference exception triggered");
+            }
+            catch (Exception ex)
+            {
+                AppConsole.WriteLine(ex.ToString());
             }
         }
 
@@ -209,6 +223,31 @@ namespace BOOSEappTV
         private void canClearBtn_Click(object sender, EventArgs e)
         {
             myCanvas.Reset();
+        }
+
+        /// <summary>
+        /// Toggles the boolean "resetCommands" to control if commands and PC to reset before every compilation/parsing or not.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Paint event data including graphics context.</param>
+        private void checkComReset_CheckedChanged(object sender, EventArgs e)
+        {
+            resetCommands = checkComReset.Checked;
+
+            if (resetCommands)
+                AppConsole.WriteLine("Command list and PC will reset");
+            else
+                AppConsole.WriteLine("Command list and PC will NOT reset");
+        }
+
+        /// <summary>
+        /// Clears/resets the console.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Paint event data including graphics context.</param>
+        private void clearConsole_Click(object sender, EventArgs e)
+        {
+            AppConsole.Clear();
         }
     }
 }

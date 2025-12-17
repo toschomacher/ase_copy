@@ -55,5 +55,23 @@ namespace BOOSEappTV
 
             targetBox.ScrollToCaret();
         }
+
+        /// <summary>
+        /// Clear all text from the RichTextBox console.
+        /// </summary>
+        public static void Clear()
+        {
+            if (targetBox == null) return;
+
+            if (targetBox.InvokeRequired)
+            {
+                targetBox.Invoke(new Action(() => targetBox.Clear()));
+            }
+            else
+            {
+                targetBox.Clear();
+            }
+        }
+
     }
 }

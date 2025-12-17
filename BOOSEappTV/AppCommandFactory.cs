@@ -1,34 +1,42 @@
 ﻿using BOOSE;
+using BOOSEappTV;
 
-namespace BOOSEappTV
+public class AppCommandFactory : CommandFactory
 {
-    public class AppCommandFactory : CommandFactory
+    public override ICommand MakeCommand(string commandType)
     {
-        public override ICommand MakeCommand(string commandType)
+        // 🔑 ASSIGNMENT DETECTION
+        if (commandType.Contains("="))
         {
-            switch (commandType.ToLower().Trim())
-            {
-                case "star":
-                    return new AppStar();
-                case "circle":
-                    return new AppCircle();
-                case "rect":
-                    return new AppRect();
-                case "moveto":
-                    return new AppMoveTo();
-                case "pencolour":
-                    return new AppPenColour();
-                case "write":
-                    return new AppWrite();
-                case "drawto":
-                    return new AppDrawTo();
-                case "int":
-                    return new AppInt();
+            return new AppAssign();
+        }
 
-                default:
-                    try { return base.MakeCommand(commandType); }
-                    catch { return null; }
-            }
+        switch (commandType.ToLower().Trim())
+        {
+            case "int":
+                return new AppInt();
+
+            case "circle":
+                return new AppCircle();
+
+            case "rect":
+                return new AppRect();
+
+            case "moveto":
+                return new AppMoveTo();
+
+            case "drawto":
+                return new AppDrawTo();
+
+            case "write":
+                return new AppWrite();
+
+            case "pencolour":
+                return new AppPenColour();
+
+            default:
+                return base.MakeCommand(commandType);
         }
     }
+
 }

@@ -36,8 +36,6 @@ namespace BOOSEappTV
             varName = VarName;
             if (parts.Length > 1) Expression = parts[1];
         }
-
-
         public override void Compile()
         {
             if (string.IsNullOrWhiteSpace(VarName))
@@ -46,40 +44,29 @@ namespace BOOSEappTV
             if (Program == null)
                 throw new InvalidOperationException("Program not set");
 
-            // Evaluate expression first (if any)
-            int intValue = 0;
-            if (!string.IsNullOrWhiteSpace(Expression))
-            {
-                try
-                {
-                    var result = Program.EvaluateExpression(Expression);
-                    intValue = Convert.ToInt32(result);
-                }
-                catch (Exception ex)
-                {
-                    AppConsole.WriteLine($"[DEBUG] Failed to evaluate expression '{Expression}': {ex.Message}");
-                    intValue = 0;
-                }
-            }
-
-            // Assign to Value property
-            Value = intValue;
-
-            // Declare variable if it doesn't exist
+            // 1️⃣ Declare variable once
             if (!Program.VariableExists(VarName))
             {
+                Value = 0;
                 Program.AddVariable(this);
 
                 AppConsole.WriteLine(
-                    $"[DEBUG] Variable '{VarName}' declared (initial value = {Value})"
+                    $"[DEBUG] Variable '{VarName}' declared (initial value = 0)"
                 );
             }
-            else
+
+            // 2️⃣ Queue assignment IMMEDIATELY AFTER declaration
+            if (!string.IsNullOrWhiteSpace(Expression))
             {
-                // Update existing variable at compile time
-                Program.UpdateVariable(VarName, Value);
+                var assign = new AppAssign(VarName, Expression)
+                {
+                    Program = Program
+                };
+
+                Program.Add(assign);
+
                 AppConsole.WriteLine(
-                    $"[DEBUG] Variable '{VarName}' already exists, updated value = {Value}"
+                    $"[DEBUG] Assignment command queued: {VarName} = {Expression}"
                 );
             }
         }
@@ -87,25 +74,9 @@ namespace BOOSEappTV
 
         public override void Execute()
         {
-            int intValue;
-
-            if (!string.IsNullOrWhiteSpace(Expression))
-            {
-                var result = Program.EvaluateExpression(Expression);
-                intValue = Convert.ToInt32(result);
-            }
-            else
-            {
-                intValue = 0;
-            }
-
-            Program.UpdateVariable(VarName, intValue);
-            Value = intValue;
-
-            AppConsole.WriteLine(
-                $"[DEBUG] Stored '{VarName}' = {Value}"
-            );
+            // DO NOTHING
         }
+
 
 
 
