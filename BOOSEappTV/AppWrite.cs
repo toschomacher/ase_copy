@@ -1,91 +1,99 @@
-﻿using System;
-using BOOSE;
+﻿using BOOSE;
+using System;
+using System.Data;
+using System.Globalization;
 
 namespace BOOSEappTV
 {
     internal class AppWrite : Evaluation
     {
         private AppCanvas canvas;
-        private string message;
+        private string expression;
 
-        public AppWrite() : base() {}
-
-        // store canvas locally and pass it to base if needed by the framework
-        public AppWrite(AppCanvas c, string message) : base()
-        {
-            this.canvas = c;
-            this.message = message;
-        }
+        public AppWrite() : base() { }
 
         public override void CheckParameters(string[] parameters)
         {
-            if (parameters.Length != 1)
-            {
-                throw new EvaluationException("AppWrite requires exactly one parameter: the message to write.");
-            }
+            if (parameters.Length < 1)
+                throw new EvaluationException("write requires an expression to output");
         }
 
         public override void Execute()
         {
             base.Execute();
-            this.canvas = AppCanvas.GetCanvas();
-            // read runtime parameters from base if available (most frameworks set Parameters)
-            if (Parameters != null && Parameters.Length > 0)
-                message = Parameters[0];
 
-            if (string.IsNullOrEmpty(message))
-                throw new EvaluationException("No message provided to write.");
+            canvas = AppCanvas.GetCanvas();
 
-            var token = message.Trim();
+            if (Parameters == null || Parameters.Length == 0)
+                throw new EvaluationException("No expression provided to write.");
 
-            if (token.Equals("circle", StringComparison.OrdinalIgnoreCase))
+            expression = string.Join(" ", Parameters);
+
+            // Special canvas debug keywords
+            string token = expression.Trim().ToLowerInvariant();
+
+            if (token == "circle" && canvas is AppCanvas ac1 && ac1.HasLastCircle)
             {
-                // canvas may be typed to BOOSE.Canvas; cast to our concrete AppCanvas to read last circle radius
-                if (canvas is BOOSEappTV.AppCanvas appCanvas)
-                {
-                    if (appCanvas.HasLastCircle)
-                    {
-                        AppConsole.WriteLine(appCanvas.LastCircleRadius.ToString());
-                        // optionally also draw text on canvas:
-                        // appCanvas.WriteText(appCanvas.LastCircleRadius.ToString());
-                        return;
-                    }
-                    else
-                    {
-                        AppConsole.WriteLine("No previously drawn circle found to write about.");
-                        //throw new EvaluationException("No previously drawn circle found to write about.");
-                    }
-                }
-                else
-                {
-                    throw new EvaluationException("Canvas implementation does not support querying last circle radius.");
-                }
-            } else if (token.Equals("rect", StringComparison.OrdinalIgnoreCase))
+                AppConsole.WriteLine(ac1.LastCircleRadius.ToString());
+                return;
+            }
+
+            if (token == "rect" && canvas is AppCanvas ac2 && ac2.HasLastRect)
             {
-                // canvas may be typed to BOOSE.Canvas; cast to our concrete AppCanvas to read last circle radius
-                if (canvas is BOOSEappTV.AppCanvas appCanvas)
+                AppConsole.WriteLine(ac2.LastRectParameters);
+                return;
+            }
+
+            // Normal expression evaluation
+            string evaluable = ReplaceVariables(expression);
+
+            try
+            {
+                var table = new DataTable();
+                object result = table.Compute(evaluable, "");
+
+                AppConsole.WriteLine(Convert.ToString(result, CultureInfo.InvariantCulture));
+            }
+            catch
+            {
+                // fallback: print literal
+                AppConsole.WriteLine(expression);
+            }
+        }
+
+        /// <summary>
+        /// Replace variables in expression with their current values.
+        /// Expression must already be space-separated.
+        /// </summary>
+        private string ReplaceVariables(string exp)
+        {
+            var tokens = exp.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                // literal → leave
+                if (double.TryParse(tokens[i], NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+                    continue;
+
+                // operator → leave
+                if ("+-*/()".Contains(tokens[i]))
+                    continue;
+
+                // variable → replace
+                if (Program.VariableExists(tokens[i]))
                 {
-                    if (appCanvas.HasLastRect)
-                    {
-                        AppConsole.WriteLine(appCanvas.LastRectParameters);
-                        // optionally also draw text on canvas:
-                        // appCanvas.WriteText(appCanvas.LastCircleRadius.ToString());
-                        return;
-                    }
+                    var v = Program.GetVariable(tokens[i]);
+
+                    if (v is AppInt ai)
+                        tokens[i] = ai.Value.ToString(CultureInfo.InvariantCulture);
+                    //else if (v is AppReal ar)
+                    //    tokens[i] = ar.Value.ToString(CultureInfo.InvariantCulture);
                     else
-                    {
-                        AppConsole.WriteLine("No previously drawn rectangle found to write about.");
-                        //throw new EvaluationException("No previously drawn circle found to write about.");
-                    }
-                }
-                else
-                {
-                    throw new EvaluationException("Canvas implementation does not support querying last rectangle sides.");
+                        throw new EvaluationException($"Unsupported variable '{tokens[i]}'");
                 }
             }
 
-                // default: print the literal message
-                AppConsole.WriteLine(message);
+            return string.Join(" ", tokens);
         }
     }
 }
