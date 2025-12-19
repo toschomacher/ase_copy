@@ -1,61 +1,84 @@
 ﻿using BOOSE;
-using BOOSEappTV;
+using System.Data;
+using System.Text.RegularExpressions;
 
-public class AppAssign : Command
+namespace BOOSEappTV
 {
-    private string varName;
-    private string expression;
-
-    public AppAssign() { }
-
-    public AppAssign(string varName, string expression)
+    public class AppAssign : Command
     {
-        this.varName = varName;
-        this.expression = expression;
-    }
+        private readonly string varName;
+        private readonly string expression;
 
-    public override void Set(StoredProgram program, string parameters)
-    {
-        Program = program;
-
-        var parts = parameters.Split('=', StringSplitOptions.TrimEntries);
-        if (parts.Length != 2)
-            throw new ParserException("Invalid assignment syntax");
-
-        varName = parts[0];
-        expression = parts[1];
-    }
-
-    public override void Execute()
-    {
-        int intValue;
-
-        // ✅ FIRST: try literal
-        if (int.TryParse(expression, out int literal))
+        public AppAssign(string varName, string expression)
         {
-            intValue = literal;
+            this.varName = varName;
+            this.expression = expression;
         }
-        // ✅ THEN: variable/expression
-        else
+
+        public override void Set(StoredProgram program, string parameters)
         {
-            if (!Program.VariableExists(expression))
+            Program = program;
+        }
+        private string TidyExpression(string exp)
+        {
+            // replicate BOOSE.Parser.tidyExpression()
+            exp = Regex.Replace(exp, @"([\+\-\*/\(\)])", " $1 ");
+            return Regex.Replace(exp, @"\s+", " ").Trim();
+        }
+
+        private string ReplaceVariables(string exp)
+        {
+            var tokens = exp.Split(' ');
+
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                if (int.TryParse(tokens[i], out _))
+                    continue;
+
+                if (Program.VariableExists(tokens[i]))
+                {
+                    tokens[i] = Program.GetVarValue(tokens[i]);
+                }
+            }
+
+            return string.Join(" ", tokens);
+        }
+
+
+        public override void Execute()
+        {
+            // 1️⃣ Normalise expression FIRST
+            string tidy = TidyExpression(expression);
+
+            // 2️⃣ Replace variables with values
+            tidy = ReplaceVariables(tidy);
+
+            // 3️⃣ Evaluate
+            int result;
+            try
+            {
+                var table = new DataTable();
+                result = Convert.ToInt32(table.Compute(tidy, ""));
+            }
+            catch
+            {
                 throw new StoredProgramException(
-                    $"Undefined variable '{expression}'"
+                    $"Invalid expression, can't evaluate {expression}"
                 );
+            }
 
-            var v = Program.GetVariable(expression);
-            intValue = Convert.ToInt32(v.Value);
+            // 4️⃣ Store result
+            Program.UpdateVariable(varName, result);
+
+            AppConsole.WriteLine(
+                $"[DEBUG] Assigned '{varName}' = {result}"
+            );
         }
 
-        Program.UpdateVariable(varName, intValue);
 
-        AppConsole.WriteLine(
-            $"[DEBUG] Assigned '{varName}' = {intValue}"
-        );
-    }
-
-    public override void CheckParameters(string[] parameters)
-    {
-        // BOOSE requires this, even if empty
+        public override void CheckParameters(string[] parameter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

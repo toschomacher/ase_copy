@@ -30,7 +30,7 @@ namespace BOOSEappTV
             AppConsole.Initialize(consoleBox);
             storedProgram = new AppStoredProgram(myCanvas);
             commandFactory = new AppCommandFactory();
-            parser = new Parser(commandFactory, storedProgram);
+            parser = new AppParser(commandFactory, storedProgram);
         }
 
         /// <summary>

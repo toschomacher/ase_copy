@@ -1,42 +1,43 @@
 ﻿using BOOSE;
-using BOOSEappTV;
 
-public class AppCommandFactory : CommandFactory
+namespace BOOSEappTV
 {
-    public override ICommand MakeCommand(string commandType)
+    /// <summary>
+    /// Command factory for BOOSEappTV.
+    /// Creates command objects but does NOT decide variable reassignment.
+    /// That logic belongs in AppParser.
+    /// </summary>
+    public class AppCommandFactory : CommandFactory
     {
-        // 🔑 ASSIGNMENT DETECTION
-        if (commandType.Contains("="))
+        public override ICommand MakeCommand(string commandType)
         {
-            return new AppAssign();
-        }
+            switch (commandType.ToLower().Trim())
+            {
+                case "int":
+                    return new AppInt();
 
-        switch (commandType.ToLower().Trim())
-        {
-            case "int":
-                return new AppInt();
+                case "circle":
+                    return new AppCircle();
 
-            case "circle":
-                return new AppCircle();
+                case "rect":
+                    return new AppRect();
 
-            case "rect":
-                return new AppRect();
+                case "moveto":
+                    return new AppMoveTo();
 
-            case "moveto":
-                return new AppMoveTo();
+                case "drawto":
+                    return new AppDrawTo();
 
-            case "drawto":
-                return new AppDrawTo();
+                case "pencolour":
+                    return new AppPenColour();
 
-            case "write":
-                return new AppWrite();
+                case "write":
+                    return new AppWrite();
 
-            case "pencolour":
-                return new AppPenColour();
-
-            default:
-                return base.MakeCommand(commandType);
+                default:
+                    // Let BOOSE handle anything we don't override
+                    return base.MakeCommand(commandType);
+            }
         }
     }
-
 }
