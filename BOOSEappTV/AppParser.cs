@@ -1,11 +1,11 @@
 ﻿using BOOSE;
 using System;
+using System.Text.RegularExpressions;
 
 namespace BOOSEappTV
 {
     public class AppParser : Parser
     {
-        // 🔑 OUR OWN references (BOOSE Parser keeps theirs private)
         private readonly StoredProgram program;
         private readonly CommandFactory factory;
 
@@ -30,38 +30,27 @@ namespace BOOSEappTV
             string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             // --------------------------------------------------
-            // REASSIGNMENT:  num = expression
+            // REASSIGNMENT
             // --------------------------------------------------
             if (parts.Length >= 3 && parts[1] == "=")
             {
                 string varName = parts[0];
-                string expression = string.Join(" ", parts, 2, parts.Length - 2);
 
+                // tidy RHS so num+10 becomes "num + 10"
+                string rhsRaw = string.Join(" ", parts, 2, parts.Length - 2);
+                string rhs = TidyExpression(rhsRaw);
+
+                // must already exist
                 if (!program.VariableExists(varName))
-                    throw new ParserException(
-                        $"unknown variable type at line {program.PC + 1}"
-                    );
+                    throw new ParserException($"unknown variable type at line {program.PC + 1}");
 
-                Evaluation variable = program.GetVariable(varName);
+                // queue runtime assignment (do NOT create AppInt here)
+                var assign = new AppAssign(varName, rhs);
+                assign.Set(program, null);           // just to set Program reference (your Set ignores params anyway)
+                program.Add(assign);
 
-                ICommand cmd;
-
-                if (variable is AppInt)
-                {
-                    cmd = new AppInt();
-                }
-                else
-                {
-                    throw new ParserException(
-                        $"unsupported variable type at line {program.PC + 1}"
-                    );
-                }
-
-                cmd.Set(program, $"{varName} = {expression}");
-                cmd.Compile();
-
-                program.Add((Command)cmd);
-                return cmd;
+                AppConsole.WriteLine($"[DEBUG] Assignment command queued: {varName} = {rhs}");
+                return assign;
             }
 
             // --------------------------------------------------
@@ -79,8 +68,13 @@ namespace BOOSEappTV
             command.Set(program, parameters);
             command.Compile();
 
-            program.Add((Command)command);
-            return command;
+            return command; // BOOSE adds it
+        }
+
+        private string TidyExpression(string exp)
+        {
+            exp = Regex.Replace(exp, @"([\+\-\*/\(\)])", " $1 ");
+            return Regex.Replace(exp, @"\s+", " ").Trim();
         }
     }
 }
