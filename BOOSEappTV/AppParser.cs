@@ -4,15 +4,48 @@ using System.Collections.Generic;
 
 namespace BOOSEappTV
 {
+    /// <summary>
+    /// Custom parser implementation for the BOOSEappTV interpreter.
+    /// </summary>
+    /// <remarks>
+    /// This parser extends the BOOSE <see cref="Parser"/> to support
+    /// application-specific commands, variable reassignment, control-flow
+    /// constructs, and method definitions.
+    /// It preserves BOOSE’s two-pass execution model by ensuring that
+    /// declarations occur at parse/compile time and evaluation is deferred
+    /// to runtime.
+    /// </remarks>
     public class AppParser : Parser
     {
+        /// <summary>
+        /// The stored program being constructed during parsing.
+        /// </summary>
         private readonly AppStoredProgram program;
+
+        /// <summary>
+        /// The command factory used to create command instances.
+        /// </summary>
         private readonly CommandFactory factory;
+
+        /// <summary>
+        /// Stack used to manage nested method declarations.
+        /// </summary>
         private readonly Stack<AppMethod> methodStack = new();
 
-        // Stack to manage nested conditionals / loops
+        /// <summary>
+        /// Stack used to manage nested conditionals and loop constructs.
+        /// </summary>
         private readonly Stack<Command> conditionalStack = new();
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AppParser"/> class.
+        /// </summary>
+        /// <param name="factory">
+        /// The command factory used to create command instances.
+        /// </param>
+        /// <param name="program">
+        /// The <see cref="AppStoredProgram"/> to populate during parsing.
+        /// </param>
         public AppParser(CommandFactory factory, AppStoredProgram program)
             : base(factory, program)
         {
@@ -20,6 +53,16 @@ namespace BOOSEappTV
             this.program = program;
         }
 
+        /// <summary>
+        /// Parses a single line of source code and returns the corresponding command.
+        /// </summary>
+        /// <param name="line">The source line to parse.</param>
+        /// <returns>
+        /// The parsed <see cref="ICommand"/>, or <c>null</c> for comments or blank lines.
+        /// </returns>
+        /// <exception cref="ParserException">
+        /// Thrown when a syntax or structural error is encountered.
+        /// </exception>
         public override ICommand ParseCommand(string line)
         {
             if (string.IsNullOrWhiteSpace(line))
@@ -28,6 +71,7 @@ namespace BOOSEappTV
             line = line.Trim();
             line = line.TrimStart('\uFEFF');
 
+            // Comment
             if (line.StartsWith("*"))
                 return null;
 
@@ -155,11 +199,7 @@ namespace BOOSEappTV
             {
                 // Example:
                 // method int testMethod int one, int two
-                // tokens after "method" can include commas attached to names
-                // Parse manually.
                 string header = line.Substring(6).Trim();
-
-                // Split by spaces, but keep commas (strip them from identifiers)
                 var tokens = header.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
                 if (tokens.Length < 2)
@@ -171,7 +211,6 @@ namespace BOOSEappTV
                 var m = new AppMethod();
                 m.Set(program, header);
 
-                // Build method def
                 var def = new AppStoredProgram.MethodDef
                 {
                     Name = methodName,
@@ -179,7 +218,6 @@ namespace BOOSEappTV
                     MethodLine = program.Count
                 };
 
-                // Parse param pairs: <type> <name> , <type> <name> ...
                 int i = 2;
                 while (i < tokens.Length)
                 {
@@ -195,12 +233,9 @@ namespace BOOSEappTV
                     def.Params.Add((pType, pName));
                 }
 
-                // Register + store
                 m.Def = def;
                 program.RegisterMethod(def);
 
-                // Ensure the variables exist in the symbol table now
-                // so the reassignment parsing inside method body can work:
                 program.EnsureVariableExistsForType(def.ReturnType, def.Name);
                 foreach (var p in def.Params)
                     program.EnsureVariableExistsForType(p.Type, p.Name);
@@ -223,10 +258,7 @@ namespace BOOSEappTV
 
                 program.Add(endM);
 
-                // link lines
                 m.Def.EndMethodLine = program.Count - 1;
-
-                // Update registry entry too (same object reference anyway, but safe)
                 program.RegisterMethod(m.Def);
 
                 return endM;
@@ -256,7 +288,10 @@ namespace BOOSEappTV
                 assign.Set(program, null);
                 program.Add(assign);
 
-                AppConsole.WriteLine($"[DEBUG] Assignment command queued: {varName} = {rhs}");
+                AppConsole.WriteLine(
+                    $"[DEBUG] Assignment command queued: {varName} = {rhs}"
+                );
+
                 return assign;
             }
 
@@ -264,7 +299,9 @@ namespace BOOSEappTV
             ICommand command = factory.MakeCommand(parts[0]);
 
             if (command == null)
-                throw new ParserException($"unknown command '{parts[0]}' at line {program.PC + 1}");
+                throw new ParserException(
+                    $"unknown command '{parts[0]}' at line {program.PC + 1}"
+                );
 
             string parameters = line.Substring(parts[0].Length).Trim();
             command.Set(program, parameters);

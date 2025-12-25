@@ -5,10 +5,34 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace BOOSEappTV
 {
+    /// <summary>
+    /// Implements the <c>write</c> command for outputting values and expressions.
+    /// </summary>
+    /// <remarks>
+    /// This command evaluates its expression at runtime and outputs the result
+    /// both to the application console and to the canvas text renderer.
+    /// It supports:
+    /// <list type="bullet">
+    /// <item><description>Quoted string literals</description></item>
+    /// <item><description>Variables (int, real, boolean)</description></item>
+    /// <item><description>Numeric expressions</description></item>
+    /// <item><description>Simple string concatenation using <c>+</c></description></item>
+    /// </list>
+    /// Evaluation is performed strictly at runtime in accordance with
+    /// BOOSE’s two-pass execution model.
+    /// </remarks>
     internal class AppWrite : Evaluation
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AppWrite"/> class.
+        /// </summary>
         public AppWrite() : base() { }
 
+        /// <summary>
+        /// Parses and stores the expression to be written.
+        /// </summary>
+        /// <param name="program">The active <see cref="StoredProgram"/> instance.</param>
+        /// <param name="parameters">The expression to output.</param>
         public override void Set(StoredProgram program, string parameters)
         {
             base.Set(program, parameters);
@@ -18,21 +42,37 @@ namespace BOOSEappTV
                 Expression = parameters.Trim();
         }
 
+        /// <summary>
+        /// Performs compile-time processing for the <c>write</c> command.
+        /// </summary>
+        /// <remarks>
+        /// No compile-time work is required; evaluation occurs at runtime.
+        /// </remarks>
         public override void Compile()
         {
             // No compile-time work
         }
 
+        /// <summary>
+        /// Executes the <c>write</c> command at runtime.
+        /// </summary>
+        /// <remarks>
+        /// The expression is evaluated according to its form and the result
+        /// is written to both the application console and the canvas.
+        /// </remarks>
+        /// <exception cref="EvaluationException">
+        /// Thrown when the expression is missing or cannot be evaluated.
+        /// </exception>
         public override void Execute()
         {
             var canvas = AppCanvas.GetCanvas();
+
             if (string.IsNullOrWhiteSpace(Expression))
                 throw new EvaluationException("No expression provided to write.");
 
             string expr = Expression.Trim();
 
             // String concatenation e.g. "£"+y or "x="+x
-
             if (expr.Contains("+") && expr.Contains("\""))
             {
                 var parts = expr.Split('+', StringSplitOptions.TrimEntries);
@@ -111,6 +151,14 @@ namespace BOOSEappTV
             }
         }
 
+        /// <summary>
+        /// Replaces variable names in an expression with their current values.
+        /// </summary>
+        /// <param name="exp">The expression containing variables.</param>
+        /// <returns>An evaluable expression string.</returns>
+        /// <exception cref="EvaluationException">
+        /// Thrown when an unknown variable is encountered.
+        /// </exception>
         private string ReplaceVariables(string exp)
         {
             var tokens = exp.Split(' ', StringSplitOptions.RemoveEmptyEntries);

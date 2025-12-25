@@ -3,12 +3,30 @@
 namespace BOOSEappTV
 {
     /// <summary>
-    /// Command factory for BOOSEappTV.
-    /// Creates command objects but does NOT decide variable reassignment.
-    /// That logic belongs in AppParser.
+    /// Provides a command factory for the BOOSEappTV interpreter.
     /// </summary>
+    /// <remarks>
+    /// This factory is responsible solely for creating command objects
+    /// based on the supplied command type. It does not perform any
+    /// parsing logic or decide whether a statement represents a
+    /// variable reassignment; such decisions are handled by
+    /// <see cref="AppParser"/>.
+    /// </remarks>
     public class AppCommandFactory : CommandFactory
     {
+        /// <summary>
+        /// Creates a command instance corresponding to the specified command type.
+        /// </summary>
+        /// <param name="commandType">
+        /// The textual command identifier as parsed from the source program.
+        /// </param>
+        /// <returns>
+        /// An <see cref="ICommand"/> instance corresponding to the command type.
+        /// </returns>
+        /// <remarks>
+        /// If the command type is not recognised by this factory, creation
+        /// is delegated to the base BOOSE <see cref="CommandFactory"/>.
+        /// </remarks>
         public override ICommand MakeCommand(string commandType)
         {
             // strip BOM if the first token has it
@@ -30,7 +48,7 @@ namespace BOOSEappTV
 
                 case "poke":
                     return new AppPoke();
-                    
+
                 case "peek":
                     return new AppPeek();
 
@@ -63,7 +81,6 @@ namespace BOOSEappTV
 
                 case "call":
                     return new AppCall();
-
 
                 default:
                     // Let BOOSE handle anything else

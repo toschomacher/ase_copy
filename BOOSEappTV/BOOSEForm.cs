@@ -7,22 +7,62 @@ namespace BOOSEappTV
 {
     /// <summary>
     /// Represents the main form of the BOOSEappTV application.
-    /// Provides drawing functionality and handles user interactions.
     /// </summary>
+    /// <remarks>
+    /// This form provides the user interface for entering BOOSE commands,
+    /// compiling and executing them, and rendering graphical output on
+    /// a canvas. It also manages application state, user interaction,
+    /// and integration with the BOOSE interpreter components.
+    /// </remarks>
     public partial class BOOSEForm : Form
     {
+        /// <summary>
+        /// The drawing canvas used to render graphical output.
+        /// </summary>
         private AppCanvas myCanvas;
-        AppCommandFactory commandFactory;
-        AppStoredProgram storedProgram;
-        IParser parser;
-        string infoBOOSE = AboutBOOSE.about();
-        bool mouseDown = false;
-        bool resetCommands = false;
 
         /// <summary>
-        /// Initialises a new instance of the BOOSEForm class.
-        /// Sets up the form and initialises refferences and variables.
+        /// Factory responsible for creating BOOSE command instances.
         /// </summary>
+        private AppCommandFactory commandFactory;
+
+        /// <summary>
+        /// The stored program that holds parsed commands and variables.
+        /// </summary>
+        private AppStoredProgram storedProgram;
+
+        /// <summary>
+        /// The parser responsible for converting source text into executable commands.
+        /// </summary>
+        private IParser parser;
+
+        /// <summary>
+        /// Informational text describing BOOSE.
+        /// </summary>
+        private string infoBOOSE = AboutBOOSE.about();
+
+        /// <summary>
+        /// Indicates whether the mouse button is currently held down.
+        /// </summary>
+        private bool mouseDown = false;
+
+        /// <summary>
+        /// Controls whether commands and program state are reset before compilation.
+        /// </summary>
+        private bool resetCommands = false;
+
+        /// <summary>
+        /// Collection of predefined demonstration programs mapped by display name.
+        /// </summary>
+        private readonly Dictionary<string, string> demoPrograms = new();
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="BOOSEForm"/> class.
+        /// </summary>
+        /// <remarks>
+        /// Sets up the form, initialises the canvas, console, command factory,
+        /// stored program, and parser.
+        /// </remarks>
         public BOOSEForm()
         {
             InitializeComponent();
@@ -34,27 +74,26 @@ namespace BOOSEappTV
         }
 
         /// <summary>
-        /// This method is called when the form (application's main window) needs to be repainted.
+        /// Called when the form needs to be repainted.
         /// </summary>
-        /// <param name="e">Paint event data including graphics context.</param>
+        /// <param name="e">Paint event data including the graphics context.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             outputBox.Image = (Bitmap)myCanvas.getBitmap();
-            //AppConsole.WriteLine("OnPaint called");
         }
 
         /// <summary>
-        /// This method is called when the form (application's main window) is resized.
+        /// Called when the form is resized.
         /// </summary>
-        /// <param name="e">Paint event data including graphics context.</param>
+        /// <param name="e">Event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
+
             if (outputBox == null)
-            {
                 return;
-            }
+
             if (myCanvas == null)
             {
                 myCanvas = new AppCanvas(outputBox.ClientSize.Width, outputBox.ClientSize.Height);
@@ -63,12 +102,12 @@ namespace BOOSEappTV
             {
                 myCanvas.Set(outputBox.ClientSize.Width, outputBox.ClientSize.Height);
             }
+
             outputBox.Image = (Bitmap)myCanvas.getBitmap();
         }
 
         /// <summary>
-        /// Handles the Load event.
-        /// This method is called when the form is first loaded.
+        /// Handles the form load event.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Event data.</param>
@@ -76,11 +115,17 @@ namespace BOOSEappTV
         {
             AppConsole.WriteLine(infoBOOSE);
             AppConsole.WriteLine("BOOSE application loaded");
+
+            InitialiseDemoPrograms();
+
+            programsBox.Items.Clear();
+            foreach (var name in demoPrograms.Keys)
+                programsBox.Items.Add(name);
+            resetCommands = checkComReset.Checked;
         }
 
         /// <summary>
-        /// Handles the MouseDown event.
-        /// Activates drawing mode when the mouse button is pressed.
+        /// Handles the mouse button press on the output canvas.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Mouse event data.</param>
@@ -91,8 +136,7 @@ namespace BOOSEappTV
         }
 
         /// <summary>
-        /// Handles the MouseUp event.
-        /// Deactivates drawing mode when the mouse button is released.
+        /// Handles the mouse button release on the output canvas.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Mouse event data.</param>
@@ -103,9 +147,12 @@ namespace BOOSEappTV
         }
 
         /// <summary>
-        /// Handles the MouseMove event for the PictureBox.
-        /// Draws a red line on the bitmap while the mouse is moved with the button held down.
+        /// Handles mouse movement over the output canvas.
         /// </summary>
+        /// <remarks>
+        /// While the mouse button is held down, a line is drawn
+        /// following the cursor movement.
+        /// </remarks>
         private void outputBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (!mouseDown) return;
@@ -115,75 +162,81 @@ namespace BOOSEappTV
         }
 
         /// <summary>
-        /// Handles the Paint event.
-        /// Draws a red ellipse and renders the bitmap onto the form.
+        /// Handles the form paint event.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
+        /// <param name="e">Paint event data.</param>
         private void BOOSEForm_Paint(object sender, PaintEventArgs e)
         {
-            // Empry for now
-        }
-
-        private void aboutBtn_Click(object sender, EventArgs e)
-        {
-            // Show information about BOOSE when the form loads
-            MessageBox.Show(infoBOOSE);
+            // Empty for now
         }
 
         /// <summary>
-        /// Enables/disables buttons depending on whether there is text in commandsBox.
+        /// Displays information about BOOSE when the About button is clicked.
+        /// </summary>
+        private void aboutBtn_Click(object sender, EventArgs e)
+        {
+            if (canvasOrPopUp.Checked)
+            {
+                myCanvas.WriteText(infoBOOSE);
+            }
+            else
+            {
+                MessageBox.Show(infoBOOSE);
+            }
+
+        }
+
+        /// <summary>
+        /// Enables or disables buttons depending on the content of the commands text box.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
+        /// <param name="e">Event data.</param>
         private void commandsBox_TextChanged(object sender, EventArgs e)
         {
-            // Check if the text in commandsBox is NOT null or empty (i.e., it contains text).
-            // The Trim() method removes leading/trailing whitespace, ensuring a button press
-            // isn't triggered just by spaces.
             if (!string.IsNullOrEmpty(commandsBox.Text.Trim()))
             {
-                // If there is text (excluding whitespace), enable button2.
                 compileBtn.Enabled = true;
                 clearBtn.Enabled = true;
             }
             else
             {
-                // If the text box is empty or only contains whitespace, disable button2.
                 compileBtn.Enabled = false;
                 clearBtn.Enabled = false;
             }
         }
 
         /// <summary>
-        /// Text from commandsBox is parsed and executed when the "Compile" button is clicked.
-        /// This acts as a compiler and verifier for the BOOSE commands.
-        /// If all commands are valid, they are executed on the canvas, otherwise an error message is shown.
+        /// Parses and executes commands when the Compile button is clicked.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
+        /// <remarks>
+        /// This acts as a compiler and verifier for BOOSE commands.
+        /// If parsing succeeds, the program is executed; otherwise,
+        /// errors are reported to the console.
+        /// </remarks>
         private void parserBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                // IMPORTANT: don’t keep old commands from previous compiles
                 if (resetCommands)
                 {
                     storedProgram.Clear();
                     storedProgram.ResetProgram();
+                    myCanvas.Reset();
                 }
+
                 parser.ParseProgram(commandsBox.Text);
                 storedProgram.Run();
             }
-            catch (BOOSE.ParserException ex)
+            catch (ParserException ex)
             {
                 AppConsole.WriteLine(ex.ToString());
             }
-            catch (BOOSE.StoredProgramException ex)
+            catch (StoredProgramException ex)
             {
                 AppConsole.WriteLine(ex.ToString());
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
                 AppConsole.WriteLine("Null reference exception triggered");
             }
@@ -193,32 +246,26 @@ namespace BOOSEappTV
             }
         }
 
-
         /// <summary>
-        /// This method is called when the "Clear commands" button is pressed and it will clear the commandsBox text.
+        /// Clears all text from the commands input box.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
         private void clearBtn_Click(object sender, EventArgs e)
         {
             commandsBox.Text = "";
         }
 
         /// <summary>
-        /// Resets the canvas to a default colour when the "Clear Canvas" button is pressed.
+        /// Resets the canvas to its default state.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
         private void canClearBtn_Click(object sender, EventArgs e)
         {
             myCanvas.Reset();
         }
 
         /// <summary>
-        /// Toggles the boolean "resetCommands" to control if commands and PC to reset before every compilation/parsing or not.
+        /// Toggles whether commands and the program counter are reset
+        /// before each compilation.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
         private void checkComReset_CheckedChanged(object sender, EventArgs e)
         {
             resetCommands = checkComReset.Checked;
@@ -230,13 +277,207 @@ namespace BOOSEappTV
         }
 
         /// <summary>
-        /// Clears/resets the console.
+        /// Clears the application console output.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Paint event data including graphics context.</param>
         private void clearConsole_Click(object sender, EventArgs e)
         {
             AppConsole.Clear();
         }
+
+        /// <summary>
+        /// Populates the internal collection of predefined demonstration programs.
+        /// </summary>
+        /// <remarks>
+        /// These programs are displayed in the program selection drop-down
+        /// and can be loaded directly into the commands input box.
+        /// </remarks>
+        private void InitialiseDemoPrograms()
+        {
+            demoPrograms.Add("INT PROGRAM 1",
+        @"int num = 10
+circle num
+num = 20
+circle num
+num = num + 20
+circle num
+num = num + num
+circle num
+num = num + 10
+circle num");
+
+            demoPrograms.Add("INT PROGRAM 2",
+        @"int num = 10
+num = num + 5
+num = num * 2
+circle num
+write num");
+
+            demoPrograms.Add("REAL PROGRAM",
+        @"pen 0,0,255
+real length = 15.5
+real width = 10.0
+real pi = 3.14159
+real radius = 27.7
+real circ = 2 * pi * radius
+real another
+real more
+moveto 100,100
+write length * width
+moveto 100,125
+write circ
+circle circ");
+
+            demoPrograms.Add("BOOLEAN PROGRAM",
+        @"boolean flag1 = true
+boolean flag2 = true
+boolean flag3 = flag1 && flag2
+write flag3");
+
+            demoPrograms.Add("ARRAY PROGRAM 1",
+        @"int x
+real y
+real z
+array int nums 10
+array real prices 10
+array real logs 10
+poke nums 5 = 99
+peek x = nums 5
+circle x
+pen 0,255,0
+poke prices 5 = 99.99
+peek y = prices 5
+write ""£""+y
+poke logs 5 = 100.01
+peek z = logs 5
+moveto 0,25
+write z");
+
+            demoPrograms.Add("ARRAY PROGRAM 2",
+        @"moveto 0,0
+int x = 0
+real y
+real z
+array int nums 10
+poke nums 5 = 99.99
+peek x = nums 5
+circle x
+array real prices 10
+poke prices 5 = 99.99
+peek y = prices 5
+pen 0,255,0
+write ""£""+y
+array real logs 10
+poke logs 5 = 100.01
+peek z = logs 5
+moveto 0,25
+write z");
+
+            demoPrograms.Add("IF PROGRAM 1",
+        @"int control = 50
+if control < 10
+    if control < 5
+        pen 255,0,0
+    else
+        pen 0,0,255
+    end if
+    circle 20
+    rect 20,20
+else
+    pen 0,255,0
+    circle 100
+    rect 100,100
+end if");
+
+            demoPrograms.Add("IF PROGRAM 2",
+        @"int control = 50
+if control < 10
+    circle 20
+else
+    circle 90
+end if");
+
+            demoPrograms.Add("WHILE PROGRAM",
+        @"moveto 100,100
+int width = 9
+int height = 150
+pen 255,128,128
+while height > 50
+    circle height
+    height = height - 15
+    if height < 100
+        pen 0,128,255
+    end if
+end while
+pen 0,255,0
+moveto 50,50
+height = 50
+while height > 10
+    rect height, height
+    height = height - 10
+end while");
+
+            demoPrograms.Add("FOR PROGRAM",
+        @"pen 255,0,0
+moveto 200,200
+for count = 1 to 20 step 2
+    circle count * 10
+end for
+pen 0,255,0
+moveto 150,150
+for count = 20 to 1 step -2
+    circle count * 10
+end for
+pen 0,0,255
+for count2 = 30 to 10 step -1
+    circle count2 * 20
+end for");
+
+            demoPrograms.Add("METHOD PROGRAM",
+        @"method int mulMethod int one, int two
+  mulMethod = one * two
+end method
+method int divMethod int one, int two
+  divMethod = one / two
+end method
+int global = 55
+call mulMethod 10 5
+moveto 100,100
+write mulMethod
+call divMethod 10 5
+moveto 100,200
+write divMethod");
+        }
+
+        /// <summary>
+        /// Clears commands, canvas, and console output simultaneously.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event data.</param>
+        private void clearAll_Click(object sender, EventArgs e)
+        {
+            clearBtn_Click(sender, e);
+            canClearBtn_Click(sender, e);
+            clearConsole_Click(sender, e);
+            myCanvas.Reset();
+        }
+
+        /// <summary>
+        /// Loads the selected demo program into the commands input box.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event data.</param>
+        private void programsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (programsBox.SelectedItem == null)
+                return;
+
+            string key = programsBox.SelectedItem.ToString();
+
+            if (demoPrograms.TryGetValue(key, out string programText))
+            {
+                commandsBox.Text = programText;
+            }
+        }
+
     }
 }

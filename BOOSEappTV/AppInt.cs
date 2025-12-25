@@ -4,18 +4,38 @@ using System;
 namespace BOOSEappTV
 {
     /// <summary>
-    /// Int variable declaration command.
-    /// - Compile() declares the variable in the variable table.
-    /// - If there is an initializer, it queues an AppAssign runtime command.
-    /// - Execute() does NOTHING (we do not want Evaluation.Execute() to run).
+    /// Represents an integer variable declaration command.
     /// </summary>
+    /// <remarks>
+    /// This class implements BOOSE-correct integer variable semantics.
+    /// <list type="bullet">
+    /// <item><description><see cref="Compile"/> declares the variable in the program's variable table.</description></item>
+    /// <item><description>If an initialiser is present, an <see cref="AppAssign"/> command is queued for runtime execution.</description></item>
+    /// <item><description><see cref="Execute"/> intentionally performs no action.</description></item>
+    /// </list>
+    /// Evaluation of expressions and value updates occur strictly at runtime,
+    /// preserving BOOSE’s two-pass execution model.
+    /// </remarks>
     public class AppInt : Evaluation, ICommand
     {
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AppInt"/> class.
+        /// </summary>
+        /// <remarks>
+        /// Integer variables are not treated as double-precision values.
+        /// </remarks>
         public AppInt()
         {
             IsDouble = false;
         }
 
+        /// <summary>
+        /// Parses and stores the parameters for the integer declaration.
+        /// </summary>
+        /// <param name="program">The active <see cref="StoredProgram"/> instance.</param>
+        /// <param name="parameters">
+        /// The parameter string containing the variable name and optional initialiser.
+        /// </param>
         public override void Set(StoredProgram program, string parameters)
         {
             Program = program;
@@ -33,6 +53,20 @@ namespace BOOSEappTV
                 Expression = "";
         }
 
+        /// <summary>
+        /// Declares the integer variable and queues any initial assignment.
+        /// </summary>
+        /// <remarks>
+        /// Variable declaration occurs at compile time.
+        /// If an initialiser expression is present, it is deferred to runtime
+        /// via an <see cref="AppAssign"/> command.
+        /// </remarks>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown when the program reference has not been set.
+        /// </exception>
+        /// <exception cref="ParserException">
+        /// Thrown when the variable name is missing.
+        /// </exception>
         public override void Compile()
         {
             if (Program == null)
@@ -52,7 +86,7 @@ namespace BOOSEappTV
                 );
             }
 
-            // 2) If initializer exists, queue runtime assignment
+            // 2) If initialiser exists, queue runtime assignment
             if (!string.IsNullOrWhiteSpace(Expression))
             {
                 // IMPORTANT: tidy so "2*radius" becomes "2 * radius"
@@ -71,6 +105,14 @@ namespace BOOSEappTV
             // We only declare here; assignments happen through AppAssign.
         }
 
+        /// <summary>
+        /// Executes the integer declaration at runtime.
+        /// </summary>
+        /// <remarks>
+        /// This method intentionally performs no action.
+        /// Overriding this prevents <see cref="Evaluation.Execute"/> from running,
+        /// which would otherwise violate BOOSE execution semantics.
+        /// </remarks>
         public override void Execute()
         {
             // Int declarations do nothing at runtime.

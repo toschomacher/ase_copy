@@ -5,19 +5,48 @@ using System.Text.RegularExpressions;
 namespace BOOSEappTV
 {
     /// <summary>
-    /// Real number variable replacement for BOOSE.Real (sealed).
-    /// Declarations add the variable; initializers queue an AppAssign for runtime.
+    /// Represents a real (floating-point) variable declaration command.
     /// </summary>
+    /// <remarks>
+    /// This class is a replacement for <c>BOOSE.Real</c>, which is sealed.
+    /// It follows BOOSE-correct semantics:
+    /// <list type="bullet">
+    /// <item><description>Variable declaration occurs at compile time.</description></item>
+    /// <item><description>If an initialiser is provided, an <see cref="AppAssign"/> command is queued for runtime.</description></item>
+    /// <item><description>No evaluation is performed during compilation.</description></item>
+    /// </list>
+    /// All expression evaluation and value updates are deferred to runtime.
+    /// </remarks>
     public class AppReal : Evaluation, ICommand
     {
-        // IMPORTANT: must be settable so AppStoredProgram.UpdateVariable can update it.
+        /// <summary>
+        /// Gets or sets the current value of the real variable.
+        /// </summary>
+        /// <remarks>
+        /// This property must be writable so that
+        /// <see cref="AppStoredProgram.UpdateVariable"/> can update the value
+        /// at runtime.
+        /// </remarks>
         public double Value { get; set; }
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AppReal"/> class.
+        /// </summary>
+        /// <remarks>
+        /// Real variables are treated as double-precision values.
+        /// </remarks>
         public AppReal()
         {
             IsDouble = true;
         }
 
+        /// <summary>
+        /// Parses and stores the parameters for the real variable declaration.
+        /// </summary>
+        /// <param name="program">The active <see cref="StoredProgram"/> instance.</param>
+        /// <param name="parameters">
+        /// The parameter string containing the variable name and optional initialiser.
+        /// </param>
         public override void Set(StoredProgram program, string parameters)
         {
             // Always set Program reference
@@ -26,14 +55,24 @@ namespace BOOSEappTV
             if (string.IsNullOrWhiteSpace(parameters))
                 return;
 
-            // parameters example: "num = 55.5" or "circ = 2*pi*radius"
+            // Parameters example: "num = 55.5" or "circ = 2*pi*radius"
             var parts = parameters.Split('=', 2, StringSplitOptions.TrimEntries);
 
             VarName = parts[0];
-
             Expression = parts.Length > 1 ? parts[1] : "";
         }
 
+        /// <summary>
+        /// Declares the real variable and queues any initial assignment.
+        /// </summary>
+        /// <remarks>
+        /// Variable declaration occurs once at compile time.
+        /// If an initialiser expression is present, a runtime assignment
+        /// command is created and queued.
+        /// </remarks>
+        /// <exception cref="ParserException">
+        /// Thrown when the variable name is missing.
+        /// </exception>
         public override void Compile()
         {
             if (string.IsNullOrWhiteSpace(VarName))
@@ -50,7 +89,7 @@ namespace BOOSEappTV
                 );
             }
 
-            // Initializer: queue runtime assignment (must be tidied!)
+            // Initialiser: queue runtime assignment (must be tidied)
             if (!string.IsNullOrWhiteSpace(Expression))
             {
                 string rhs = TidyExpression(Expression);
@@ -65,11 +104,24 @@ namespace BOOSEappTV
             }
         }
 
+        /// <summary>
+        /// Executes the real variable declaration at runtime.
+        /// </summary>
+        /// <remarks>
+        /// This method intentionally performs no action.
+        /// All value changes are handled by queued <see cref="AppAssign"/> commands.
+        /// </remarks>
         public override void Execute()
         {
             // Declarations do nothing at runtime (assignments handled via AppAssign).
         }
 
+        /// <summary>
+        /// Normalises a mathematical expression by inserting spacing
+        /// around operators and parentheses.
+        /// </summary>
+        /// <param name="exp">The expression to tidy.</param>
+        /// <returns>A normalised expression string.</returns>
         private static string TidyExpression(string exp)
         {
             exp = Regex.Replace(exp, @"([\+\-\*/\(\)])", " $1 ");

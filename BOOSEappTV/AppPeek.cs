@@ -5,15 +5,43 @@ using System.Data;
 namespace BOOSEappTV
 {
     /// <summary>
-    /// Runtime array read:
-    /// peek varName = arrayName index
+    /// Represents a runtime array read operation using the <c>peek</c> command.
     /// </summary>
+    /// <remarks>
+    /// This command reads a value from an array at runtime and assigns it to
+    /// a target variable. The command follows the syntax:
+    /// <c>peek varName = arrayName index</c>.
+    /// Evaluation of the index expression and assignment occur strictly
+    /// at runtime in accordance with BOOSE semantics.
+    /// </remarks>
     public class AppPeek : Command
     {
+        /// <summary>
+        /// The name of the target variable that will receive the array value.
+        /// </summary>
         private string targetVar;
+
+        /// <summary>
+        /// The name of the source array.
+        /// </summary>
         private string arrayName;
+
+        /// <summary>
+        /// The expression used to compute the array index.
+        /// </summary>
         private string indexExpr;
 
+        /// <summary>
+        /// Parses and stores the parameters for the <c>peek</c> command.
+        /// </summary>
+        /// <param name="program">The active <see cref="StoredProgram"/> instance.</param>
+        /// <param name="parameters">
+        /// The parameter string specifying the target variable, array name,
+        /// and index expression.
+        /// </param>
+        /// <exception cref="ParserException">
+        /// Thrown when the syntax of the <c>peek</c> command is invalid.
+        /// </exception>
         public override void Set(StoredProgram program, string parameters)
         {
             Program = program;
@@ -32,12 +60,30 @@ namespace BOOSEappTV
             indexExpr = parts[3];
         }
 
+        /// <summary>
+        /// Performs compile-time processing for the <c>peek</c> command.
+        /// </summary>
+        /// <remarks>
+        /// As this is a runtime command, it must be explicitly added
+        /// to the program command list.
+        /// </remarks>
         public override void Compile()
         {
             // Runtime command → MUST be added to program
             Program.Add(this);
         }
 
+        /// <summary>
+        /// Executes the <c>peek</c> command at runtime.
+        /// </summary>
+        /// <remarks>
+        /// This method evaluates the index expression, retrieves the value
+        /// from the specified array, and assigns it to the target variable.
+        /// </remarks>
+        /// <exception cref="StoredProgramException">
+        /// Thrown when variables are undeclared, types mismatch, or
+        /// the array type is unsupported.
+        /// </exception>
         public override void Execute()
         {
             if (!Program.VariableExists(targetVar))
@@ -97,11 +143,13 @@ namespace BOOSEappTV
             }
         }
 
-
-        // =====================
         // Helpers
-        // =====================
 
+        /// <summary>
+        /// Evaluates an integer expression using the current program state.
+        /// </summary>
+        /// <param name="expr">The expression to evaluate.</param>
+        /// <returns>The evaluated integer result.</returns>
         private int EvaluateInt(string expr)
         {
             string replaced = ReplaceVariables(expr);
@@ -110,6 +158,14 @@ namespace BOOSEappTV
             return Convert.ToInt32(result);
         }
 
+        /// <summary>
+        /// Replaces variable names in an expression with their current values.
+        /// </summary>
+        /// <param name="exp">The expression containing variables.</param>
+        /// <returns>An evaluable expression string.</returns>
+        /// <exception cref="StoredProgramException">
+        /// Thrown when an invalid variable or token is encountered.
+        /// </exception>
         private string ReplaceVariables(string exp)
         {
             var tokens = exp.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -136,6 +192,13 @@ namespace BOOSEappTV
             return string.Join(" ", tokens);
         }
 
+        /// <summary>
+        /// Performs parameter validation.
+        /// </summary>
+        /// <param name="parameter">The parameter array.</param>
+        /// <remarks>
+        /// Parameter validation is handled during parsing in <see cref="Set"/>.
+        /// </remarks>
         public override void CheckParameters(string[] parameter)
         {
             // handled by Set()

@@ -6,23 +6,86 @@ using System.Text.RegularExpressions;
 
 namespace BOOSEappTV
 {
+    /// <summary>
+    /// Custom stored program implementation extending BOOSE.StoredProgram.
+    /// </summary>
+    /// <remarks>
+    /// This class is the core runtime container for the BOOSEappTV interpreter.
+    /// It extends <see cref="StoredProgram"/> to support:
+    /// <list type="bullet">
+    /// <item><description>User-defined methods with parameters and return values</description></item>
+    /// <item><description>Call stack management</description></item>
+    /// <item><description>Custom variable types (int, real, boolean)</description></item>
+    /// <item><description>Robust expression tidying and evaluation</description></item>
+    /// </list>
+    /// The class preserves BOOSE’s two-pass execution model by ensuring that
+    /// variable declaration occurs during parsing/compilation and that all
+    /// evaluation and assignment occurs at runtime.
+    /// </remarks>
     public class AppStoredProgram : StoredProgram
     {
         // Method support
+
+        /// <summary>
+        /// Represents a method definition stored in the program.
+        /// </summary>
+        /// <remarks>
+        /// This structure is populated by <see cref="AppParser"/> and is used
+        /// at runtime by <see cref="AppCall"/> to manage method invocation.
+        /// </remarks>
         public class MethodDef
         {
+            /// <summary>
+            /// The method name.
+            /// </summary>
             public string Name = "";
-            public string ReturnType = "";                 // "int" / "real" / "boolean"
-            public int MethodLine;                         // index of AppMethod command
-            public int EndMethodLine;                      // index of AppEndMethod command
+
+            /// <summary>
+            /// The return type of the method ("int", "real", or "boolean").
+            /// </summary>
+            public string ReturnType = "";
+
+            /// <summary>
+            /// The program counter index of the corresponding <see cref="AppMethod"/> command.
+            /// </summary>
+            public int MethodLine;
+
+            /// <summary>
+            /// The program counter index of the matching <see cref="AppEndMethod"/> command.
+            /// </summary>
+            public int EndMethodLine;
+
+            /// <summary>
+            /// The list of method parameters as (Type, Name) tuples.
+            /// </summary>
             public List<(string Type, string Name)> Params = new();
         }
 
+        /// <summary>
+        /// Represents a call stack frame for a method invocation.
+        /// </summary>
+        /// <remarks>
+        /// Each frame stores the return address, the method definition,
+        /// and a snapshot of parameter variable values so they can be
+        /// restored when the method exits.
+        /// </remarks>
         private class CallFrame
         {
+            /// <summary>
+            /// The program counter to return to after method completion.
+            /// </summary>
             public int ReturnPC;
+
+            /// <summary>
+            /// The method being executed.
+            /// </summary>
             public MethodDef Method;
-            public Dictionary<string, string?> SavedValues = new(); // null = didn't exist
+
+            /// <summary>
+            /// Saved variable values for parameters.
+            /// A value of <c>null</c> indicates the variable did not previously exist.
+            /// </summary>
+            public Dictionary<string, string?> SavedValues = new();
 
             public CallFrame(int ReturnPC, MethodDef method)
             {
@@ -38,11 +101,24 @@ namespace BOOSEappTV
             }
         }
 
-        private readonly Dictionary<string, MethodDef> _methods = new(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, MethodDef> _methods =
+            new(StringComparer.OrdinalIgnoreCase);
+
         private readonly Stack<CallFrame> _callStack = new();
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="AppStoredProgram"/> class.
+        /// </summary>
+        /// <param name="canvas">The canvas used for drawing commands.</param>
         public AppStoredProgram(ICanvas canvas) : base(canvas) { }
 
+        /// <summary>
+        /// Registers a method definition with the program.
+        /// </summary>
+        /// <param name="def">The method definition to register.</param>
+        /// <exception cref="StoredProgramException">
+        /// Thrown when the method name is missing.
+        /// </exception>
         public void RegisterMethod(MethodDef def)
         {
             if (string.IsNullOrWhiteSpace(def.Name))
@@ -51,9 +127,33 @@ namespace BOOSEappTV
             _methods[def.Name] = def;
         }
 
-        public bool TryGetMethod(string name, out MethodDef def) => _methods.TryGetValue(name, out def!);
+        /// <summary>
+        /// Attempts to retrieve a method definition by name.
+        /// </summary>
+        /// <param name="name">The method name.</param>
+        /// <param name="def">The resulting method definition.</param>
+        /// <returns>
+        /// <c>true</c> if the method exists; otherwise <c>false</c>.
+        /// </returns>
+        public bool TryGetMethod(string name, out MethodDef def) =>
+            _methods.TryGetValue(name, out def!);
 
-        // Called by AppCall
+        // Method execution
+
+        /// <summary>
+        /// Enters a method call.
+        /// </summary>
+        /// <remarks>
+        /// This method:
+        /// <list type="bullet">
+        /// <item><description>Saves the current execution context</description></item>
+        /// <item><description>Evaluates argument expressions</description></item>
+        /// <item><description>Initialises parameter variables</description></item>
+        /// <item><description>Jumps execution to the method body</description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="def">The method definition.</param>
+        /// <param name="argExprs">The argument expressions.</param>
         public void EnterMethod(MethodDef def, List<string> argExprs)
         {
             var frame = new CallFrame(PC + 1, def);
@@ -83,7 +183,13 @@ namespace BOOSEappTV
             PC = def.MethodLine + 1;
         }
 
-        // Called by AppEndMethod
+        /// <summary>
+        /// Exits the currently executing method.
+        /// </summary>
+        /// <remarks>
+        /// Restores saved parameter variables and resumes execution
+        /// at the instruction following the original call.
+        /// </remarks>
         public void ExitMethod()
         {
             if (_callStack.Count == 0)
@@ -99,35 +205,39 @@ namespace BOOSEappTV
         }
 
         // Expression helpers
-        // fixes count*10, g+h, count2*20, etc.
+
+        /// <summary>
+        /// Normalises an expression by inserting spacing around operators.
+        /// </summary>
+        /// <param name="expr">The expression to tidy.</param>
+        /// <returns>A normalised expression string.</returns>
         public string TidyExpression(string expr)
         {
             if (expr == null) return "";
 
-            // space around arithmetic + parentheses
             expr = Regex.Replace(expr, @"([+\-*/()])", " $1 ");
-
-            // space around boolean operators && || !
             expr = expr.Replace("&&", " && ").Replace("||", " || ");
             expr = Regex.Replace(expr, @"(!=|==|<=|>=|<|>)", " $1 ");
-
-            // collapse whitespace
             expr = Regex.Replace(expr, @"\s+", " ").Trim();
             return expr;
         }
 
+        /// <summary>
+        /// Evaluates an expression and returns the result as a string.
+        /// </summary>
+        /// <remarks>
+        /// BOOSE’s evaluator is attempted first. If that fails, a numeric-only
+        /// fallback using <see cref="DataTable.Compute"/> is used.
+        /// </remarks>
         private string EvaluateToString(string expr)
         {
-            // Try BOOSE's evaluator first (handles booleans, etc.)
-            // but normalise spacing so it doesn't choke on count*10.
             string tidy = TidyExpression(expr);
             try
             {
-                return EvaluateExpression(tidy); // BOOSE.StoredProgram.EvaluateExpression(string)
+                return EvaluateExpression(tidy);
             }
             catch
             {
-                // fallback: numeric-only DataTable.Compute
                 try
                 {
                     var table = new DataTable();
@@ -136,7 +246,9 @@ namespace BOOSEappTV
                 }
                 catch
                 {
-                    throw new StoredProgramException($"Invalid expression, can't evaluate {expr}");
+                    throw new StoredProgramException(
+                        $"Invalid expression, can't evaluate {expr}"
+                    );
                 }
             }
         }
@@ -152,14 +264,16 @@ namespace BOOSEappTV
                 if (t is "+" or "-" or "*" or "/" or "(" or ")") continue;
 
                 if (!VariableExists(t))
-                    throw new StoredProgramException($"Unknown variable '{t}' in expression.");
+                    throw new StoredProgramException(
+                        $"Unknown variable '{t}' in expression."
+                    );
 
                 tokens[i] = GetVarValue(t);
             }
             return string.Join(" ", tokens);
         }
 
-        // Variable save/restore + typed assignment
+        // Variable save / restore
         private void SaveVar(CallFrame frame, string name)
         {
             if (VariableExists(name))
@@ -172,11 +286,8 @@ namespace BOOSEappTV
         {
             if (oldValueOrNull == null)
             {
-                // We cannot truly remove variables via BOOSE API easily,
-                // so we reset to a sensible default if it exists now.
                 if (VariableExists(name))
                 {
-                    // try reset by type
                     var v = GetVariable(name);
                     if (v is AppInt ai) ai.Value = 0;
                     else if (v is AppReal ar) ar.Value = 0.0;
@@ -185,24 +296,28 @@ namespace BOOSEappTV
                 return;
             }
 
-            // restore value by type
             var varObj = GetVariable(name);
             if (varObj is AppInt)
                 UpdateVariable(name, Convert.ToInt32(oldValueOrNull));
             else if (varObj is AppReal)
                 UpdateVariable(name, Convert.ToDouble(oldValueOrNull));
             else if (varObj is AppBoolean ab)
-                ab.Value = oldValueOrNull.Equals("true", StringComparison.OrdinalIgnoreCase) || oldValueOrNull == "1";
+                ab.Value =
+                    oldValueOrNull.Equals("true", StringComparison.OrdinalIgnoreCase) ||
+                    oldValueOrNull == "1";
             else
                 UpdateVariable(name, Convert.ToInt32(oldValueOrNull));
         }
 
+        /// <summary>
+        /// Ensures a variable of the specified type exists in the program.
+        /// </summary>
+        /// <param name="type">The variable type.</param>
+        /// <param name="name">The variable name.</param>
         public void EnsureVariableExistsForType(string type, string name)
         {
             if (VariableExists(name)) return;
 
-            // BOOSE's StoredProgram.AddVariable(...) takes ONE argument: an Evaluation.
-            // The custom types are Evaluations (AppInt/AppReal/AppBoolean).
             type = type.ToLower().Trim();
 
             Evaluation v = type switch
@@ -210,12 +325,12 @@ namespace BOOSEappTV
                 "int" => new AppInt(),
                 "real" => new AppReal(),
                 "boolean" => new AppBoolean(),
-                _ => throw new StoredProgramException($"Unknown type '{type}' for '{name}'.")
+                _ => throw new StoredProgramException(
+                    $"Unknown type '{type}' for '{name}'."
+                )
             };
 
-            // Most BOOSE Evaluation types expose VarName
             v.VarName = name;
-
             AddVariable(v);
         }
 
@@ -229,12 +344,15 @@ namespace BOOSEappTV
                 bool b =
                     value.Equals("true", StringComparison.OrdinalIgnoreCase) ||
                     value == "1";
+
                 if (v is AppBoolean ab) ab.Value = b;
-                else throw new StoredProgramException($"Type mismatch assigning boolean to '{varName}'.");
+                else
+                    throw new StoredProgramException(
+                        $"Type mismatch assigning boolean to '{varName}'."
+                    );
                 return;
             }
 
-            // numeric: allow real/int conversion, BOOSE rule is to truncate real into an int
             if (type == "int")
             {
                 int iv = Convert.ToInt32(Convert.ToDouble(value));
@@ -252,6 +370,7 @@ namespace BOOSEappTV
             throw new StoredProgramException($"Unknown type '{type}'.");
         }
 
+        /// <inheritdoc />
         public override void UpdateVariable(string varName, int value)
         {
             Evaluation v = GetVariable(varName);
@@ -265,6 +384,7 @@ namespace BOOSEappTV
             base.UpdateVariable(varName, value);
         }
 
+        /// <inheritdoc />
         public override void UpdateVariable(string varName, double value)
         {
             Evaluation v = GetVariable(varName);
@@ -278,6 +398,7 @@ namespace BOOSEappTV
             base.UpdateVariable(varName, value);
         }
 
+        /// <inheritdoc />
         public override string GetVarValue(string varName)
         {
             Evaluation v = GetVariable(varName);
