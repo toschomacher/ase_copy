@@ -174,17 +174,6 @@ namespace BOOSEappTV
                 }
                 parser.ParseProgram(commandsBox.Text);
                 storedProgram.Run();
-
-                /* 🔍 DEBUG: verify variable storage
-                if (storedProgram.VariableExists("num"))
-                {
-                    var v = storedProgram.GetVariable("num");
-                    AppConsole.WriteLine($"[DEBUG] Variable 'num' exists, value = {v.Value}");
-                }
-                else
-                {
-                    AppConsole.WriteLine("[DEBUG] Variable 'num' does NOT exist");
-                }*/
             }
             catch (BOOSE.ParserException ex)
             {

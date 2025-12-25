@@ -11,10 +11,28 @@ namespace BOOSEappTV
     {
         public override ICommand MakeCommand(string commandType)
         {
+            // strip BOM if the first token has it
+            commandType = commandType.Trim().Trim('\uFEFF');
+
             switch (commandType.ToLower().Trim())
             {
                 case "int":
                     return new AppInt();
+
+                case "real":
+                    return new AppReal();
+
+                case "boolean":
+                    return new AppBoolean();
+
+                case "array":
+                    return new AppArray();
+
+                case "poke":
+                    return new AppPoke();
+                    
+                case "peek":
+                    return new AppPeek();
 
                 case "circle":
                     return new AppCircle();
@@ -34,8 +52,21 @@ namespace BOOSEappTV
                 case "write":
                     return new AppWrite();
 
+                case "star":
+                    return new AppStar();
+
+                case "method":
+                    return new AppMethod();
+
+                case "end":
+                    return new AppEndMethod();
+
+                case "call":
+                    return new AppCall();
+
+
                 default:
-                    // Let BOOSE handle anything we don't override
+                    // Let BOOSE handle anything else
                     return base.MakeCommand(commandType);
             }
         }

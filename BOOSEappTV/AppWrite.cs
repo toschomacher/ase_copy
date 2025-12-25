@@ -1,96 +1,134 @@
 ﻿using BOOSE;
 using System;
 using System.Data;
-using System.Globalization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BOOSEappTV
 {
     internal class AppWrite : Evaluation
     {
-        private AppCanvas canvas;
-        private string expression;
-
         public AppWrite() : base() { }
 
-        public override void CheckParameters(string[] parameters)
+        public override void Set(StoredProgram program, string parameters)
         {
-            if (parameters.Length < 1)
-                throw new EvaluationException("write requires an expression to output");
+            base.Set(program, parameters);
+            Program = program;
+
+            if (!string.IsNullOrWhiteSpace(parameters))
+                Expression = parameters.Trim();
+        }
+
+        public override void Compile()
+        {
+            // No compile-time work
         }
 
         public override void Execute()
         {
-            base.Execute();
-
-            canvas = AppCanvas.GetCanvas();
-
-            if (Parameters == null || Parameters.Length == 0)
+            var canvas = AppCanvas.GetCanvas();
+            if (string.IsNullOrWhiteSpace(Expression))
                 throw new EvaluationException("No expression provided to write.");
 
-            expression = string.Join(" ", Parameters);
+            string expr = Expression.Trim();
 
-            // Special canvas debug keywords
-            string token = expression.Trim().ToLowerInvariant();
+            // String concatenation e.g. "£"+y or "x="+x
 
-            if (token == "circle" && canvas is AppCanvas ac1 && ac1.HasLastCircle)
+            if (expr.Contains("+") && expr.Contains("\""))
             {
-                AppConsole.WriteLine(ac1.LastCircleRadius.ToString());
+                var parts = expr.Split('+', StringSplitOptions.TrimEntries);
+                string output = "";
+
+                foreach (var part in parts)
+                {
+                    // Quoted string literal
+                    if (part.StartsWith("\"") && part.EndsWith("\"") && part.Length >= 2)
+                    {
+                        output += part[1..^1];
+                    }
+                    // Variable
+                    else if (Program.VariableExists(part))
+                    {
+                        string rawValue = Program.GetVarValue(part);
+                        var variable = Program.GetVariable(part);
+
+                        if (variable is AppBoolean)
+                            output += rawValue == "1" ? "true" : "false";
+                        else
+                            output += rawValue;
+                    }
+                    else
+                    {
+                        throw new EvaluationException($"Unknown variable '{part}'");
+                    }
+                }
+
+                AppConsole.WriteLine(output);
+                canvas.WriteText(output);
                 return;
             }
 
-            if (token == "rect" && canvas is AppCanvas ac2 && ac2.HasLastRect)
+            // Quoted string literal
+            if (expr.StartsWith("\"") && expr.EndsWith("\"") && expr.Length >= 2)
             {
-                AppConsole.WriteLine(ac2.LastRectParameters);
+                AppConsole.WriteLine(expr[1..^1]);
                 return;
             }
 
-            // Normal expression evaluation
-            string evaluable = ReplaceVariables(expression);
+            // Single variable
+            if (Program.VariableExists(expr))
+            {
+                var variable = Program.GetVariable(expr);
+
+                // BOOLEAN — always read Value directly
+                if (variable is AppBoolean ab)
+                {
+                    string text = ab.Value ? "true" : "false";
+                    AppConsole.WriteLine(text);
+                    canvas.WriteText(text);
+                    return;
+                }
+
+                // INT / REAL
+                string rawValue = Program.GetVarValue(expr);
+                AppConsole.WriteLine(rawValue);
+                canvas.WriteText(rawValue);
+                return;
+            }
+
+            // Numeric expression
+            string evaluable = ReplaceVariables(expr);
 
             try
             {
                 var table = new DataTable();
                 object result = table.Compute(evaluable, "");
-
-                AppConsole.WriteLine(Convert.ToString(result, CultureInfo.InvariantCulture));
+                AppConsole.WriteLine(Convert.ToString(result));
+                canvas.WriteText(Convert.ToString(result));
             }
             catch
             {
-                // fallback: print literal
-                AppConsole.WriteLine(expression);
+                throw new EvaluationException("Invalid expression in write.");
             }
         }
 
-        /// <summary>
-        /// Replace variables in expression with their current values.
-        /// Expression must already be space-separated.
-        /// </summary>
         private string ReplaceVariables(string exp)
         {
             var tokens = exp.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < tokens.Length; i++)
             {
-                // literal → leave
-                if (double.TryParse(tokens[i], NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+                string t = tokens[i];
+
+                if (double.TryParse(t, out _))
                     continue;
 
-                // operator → leave
-                if ("+-*/()".Contains(tokens[i]))
+                if (t is "+" or "-" or "*" or "/" or "(" or ")")
                     continue;
 
-                // variable → replace
-                if (Program.VariableExists(tokens[i]))
-                {
-                    var v = Program.GetVariable(tokens[i]);
+                if (!Program.VariableExists(t))
+                    throw new EvaluationException($"Unknown variable '{t}'");
 
-                    if (v is AppInt ai)
-                        tokens[i] = ai.Value.ToString(CultureInfo.InvariantCulture);
-                    //else if (v is AppReal ar)
-                    //    tokens[i] = ar.Value.ToString(CultureInfo.InvariantCulture);
-                    else
-                        throw new EvaluationException($"Unsupported variable '{tokens[i]}'");
-                }
+                tokens[i] = Program.GetVarValue(t);
             }
 
             return string.Join(" ", tokens);

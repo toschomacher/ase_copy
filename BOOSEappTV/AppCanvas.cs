@@ -8,7 +8,7 @@ namespace BOOSEappTV
     /// Custom canvas implementation that extends BOOSE.Canvas and adds application-specific features.
     /// This class manages the drawing state, drawing surface (Bitmap), and basic geometric drawing operations.
     /// </summary>
-    public class AppCanvas : BOOSE.Canvas, ICanvas
+    public class AppCanvas : BOOSE.Canvas, ICanvas, IAppCanvas
     {
         /// <summary>
         /// The default width of the canvas.
@@ -265,10 +265,14 @@ namespace BOOSEappTV
         /// <param name="text">The string to be drawn.</param>
         public void WriteText(string text)
         {
+            if (brush == null)
+            {
+                brush = new SolidBrush(penColour);
+            }
+
             if (graphics == null) return;
             using var font = new Font("Segoe UI", 10);
-            using var sfBrush = new SolidBrush(Color.Black);
-            graphics.DrawString(text, font, sfBrush, new PointF(xPos, yPos));
+            graphics.DrawString(text, font, brush, new PointF(xPos, yPos));
         }
 
         /// <summary>
@@ -297,5 +301,53 @@ namespace BOOSEappTV
         /// </summary>
         /// <returns>The static singleton instance of <see cref="AppCanvas"/>.</returns>
         public static AppCanvas GetCanvas() => Current;
+
+        public void Star(int size, bool filled)
+        {
+            if (graphics == null)
+                throw new CanvasException("Graphics context not initialised.");
+
+            if (size < 1)
+                throw new CanvasException("Star size must be positive.");
+
+            // 5-point star geometry
+            PointF[] points = new PointF[10];
+
+            float cx = xPos;
+            float cy = yPos;
+
+            float outerRadius = size;
+            float innerRadius = size * 0.4f;
+
+            double angle = -Math.PI / 2;       // start at top
+            double step = Math.PI / 5;         // 36°
+
+            for (int i = 0; i < 10; i++)
+            {
+                float r = (i % 2 == 0) ? outerRadius : innerRadius;
+
+                points[i] = new PointF(
+                    cx + (float)(Math.Cos(angle) * r),
+                    cy + (float)(Math.Sin(angle) * r)
+                );
+
+                angle += step;
+            }
+
+            if (filled)
+            {
+                using var fillBrush = new SolidBrush(penColour);
+                graphics.FillPolygon(fillBrush, points);
+            }
+            else
+            {
+                graphics.DrawPolygon(pen, points);
+            }
+        }
+
+        public void DrawLabeledShape(string label)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

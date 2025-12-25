@@ -1,79 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BOOSE;
+﻿using BOOSE;
+using System;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace BOOSEappTV
 {
-    /// <summary>
-    /// Command to draw a star shape using IAppCanvas.
-    /// </summary>
     public class AppStar : CommandTwoParameters
     {
-        private int starSize;
-
-        public AppStar() : base() { }
-
-        public AppStar(Canvas c, int starSize) : base(c)
-        {
-            this.starSize = starSize;
-
-        }
         public override void Execute()
         {
             AppConsole.WriteLine("My AppStar method called");
-            int size = GetIntParameter(0);
-            bool filled = GetBoolParameter(1);
 
-            base.Execute();
-            if (IsDouble)
-                throw new CanvasException("Star size must be an integer.");
-            starSize = Paramsint[0];
+            if (canvas is not IAppCanvas appCanvas)
+                throw new CanvasException("Star command requires AppCanvas.");
 
+            int size = EvaluateIntExpression(Parameters[0], "Star size");
+            bool filled = EvaluateBoolExpression(Parameters[1], "Filled");
 
-            if (starSize < 1)
+            if (size < 1)
                 throw new CanvasException("Star size must be a positive integer.");
 
-            if (canvas is IAppCanvas appCanvas)
+            appCanvas.Star(size, filled);
+        }
+
+        // Helpers
+        private int EvaluateIntExpression(string expr, string name)
+        {
+            expr = Tidy(expr);
+            string evaluable = ReplaceVariables(expr);
+
+            try
             {
-                appCanvas.Star(size, filled);
+                var table = new DataTable();
+                object result = table.Compute(evaluable, "");
+                return Convert.ToInt32(result);
+            }
+            catch
+            {
+                throw new CanvasException($"{name} must be a valid integer expression.");
             }
         }
 
-
-        private int GetIntParameter(int index)
+        private bool EvaluateBoolExpression(string expr, string name)
         {
-            if (Parameters == null)
-                throw new InvalidOperationException("Parameters not set.");
+            expr = expr.Trim().ToLower();
 
-            if (index < 0 || index >= Parameters.Length)
-                throw new ArgumentOutOfRangeException(nameof(index), "Parameter index out of range.");
+            if (expr == "true" || expr == "1") return true;
+            if (expr == "false" || expr == "0") return false;
 
-            if (!int.TryParse(Parameters[index], NumberStyles.Integer, CultureInfo.InvariantCulture, out var value))
-                throw new FormatException($"Parameter at index {index} is not a valid integer: '{Parameters[index]}'.");
-
-            return value;
+            throw new CanvasException($"{name} must be true/false or 1/0.");
         }
 
-        private bool GetBoolParameter(int index)
+        private string Tidy(string expr)
         {
-            if (Parameters == null)
-                throw new InvalidOperationException("Parameters not set.");
+            expr = Regex.Replace(expr, @"([+\-*/()])", " $1 ");
+            return Regex.Replace(expr, @"\s+", " ").Trim();
+        }
 
-            if (index < 0 || index >= Parameters.Length)
-                throw new ArgumentOutOfRangeException(nameof(index), "Parameter index out of range.");
+        private string ReplaceVariables(string expr)
+        {
+            var tokens = expr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            // accept "true"/"false" (case-insensitive) and "1"/"0"
-            var s = Parameters[index].Trim();
-            if (bool.TryParse(s, out var b)) return b;
-            if (s == "1") return true;
-            if (s == "0") return false;
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                string t = tokens[i];
 
-            throw new FormatException($"Parameter at index {index} is not a valid boolean: '{Parameters[index]}'");
+                if (double.TryParse(t, out _))
+                    continue;
+
+                if (t is "+" or "-" or "*" or "/" or "(" or ")")
+                    continue;
+
+                if (Program.VariableExists(t))
+                {
+                    tokens[i] = Program.GetVarValue(t);
+                    continue;
+                }
+
+                throw new CanvasException($"Unknown variable '{t}' in expression.");
+            }
+
+            return string.Join(" ", tokens);
         }
     }
 }
-
